@@ -17,6 +17,7 @@ class LocatorsStores:
     telephoneField= "//body/div[@id='root']/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[7]/span[1]/div[1]/input[1]"
     emailField="//body/div[@id='root']/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[8]/span[1]/div[1]/input[1]"
     departmentField= "//body/div[@id='root']/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[9]/span[1]/div[3]/div[1]"
+    selectDepart= "(//div[contains(@class,'input_autocompleteItem')])[1]"
     cityField ="//body/div[@id='root']/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[10]/div[1]/div[1]/span[1]/div[1]/input[1]"
     streetField= "//body/div[@id='root']/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[10]/div[1]/div[2]/span[1]/div[1]/input[1]"
     buildingField= "//body/div[@id='root']/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[10]/div[1]/div[3]/span[1]/div[1]/input[1]"
