@@ -9,11 +9,13 @@ class Base:
     def set_up(self):
         print("Initiating Chrome driver")
         self.driver = webdriver.Chrome(ChromeDriverManager().install())
-        self.driver.get("https://qa-admin.trado.co.il/#/orders")
+        self.driver.get("https://qa-admin.trado.co.il/#/stores")
         print("-----------------------------------------")
         print("Test is started")
         self.driver.implicitly_wait(10)
         self.driver.maximize_window()
+
+        self.driver.get("https://qa-admin.trado.co.il/#/stores")
 
         yield self.driver
         if self.driver is not None:
