@@ -1,7 +1,7 @@
-import Pages.pReports
+import Pages.PReports
 from selenium.webdriver.support.select import Select
 from Base.base import Base
-from Pages.pReports import Report_Page
+from Pages.PReports import Report_Page
 import pytest
 from time import sleep
 import requests
