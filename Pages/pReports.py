@@ -96,6 +96,7 @@ class Report_Page(Reports):
         Width = self.driver.find_element(By.XPATH, self.saveButton).get_attribute("clientWidth")
         vavlue = self.driver.find_element(By.XPATH, self.saveButton).get_attribute("innerHTML")
         return Height , Width ,vavlue
+    # commit
 
     # unfinished
     # extract dates from the box
