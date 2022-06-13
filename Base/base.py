@@ -16,8 +16,6 @@ class Base:
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
 
-        self.driver.get("https://qa-admin.trado.co.il/#/stores")
-
         yield self.driver
         if self.driver is not None:
             print("-----------------------------------------")
