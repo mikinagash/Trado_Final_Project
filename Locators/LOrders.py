@@ -9,3 +9,7 @@ class OrdersElement:
     order_page_path ="//body[1]/div[1]/div[1]/div[2]/div[1]/nav[1]/div[2]/a[5]/span[2]"
     search = "//input[@placeholder='חיפוש בהזמנות']"
     table = "//tbody/tr[1]"
+    order = "//tbody/tr[2]"
+    error_msg ="//body[1]/div[1]/div[1]/div[2]/main[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]"
+
+

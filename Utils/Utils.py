@@ -7,7 +7,7 @@ class Utils():
     def __init__(self,driver):
         self.driver = driver
 
-    def validtion(self,expected, actual):
+    def validtion(self,expected, actual,pic):
         driver = self.driver
         try:
             assert expected == actual

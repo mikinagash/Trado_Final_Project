@@ -1,7 +1,6 @@
 import pytest
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 
 
 class Base:
@@ -13,7 +12,7 @@ class Base:
         self.driver.get("https://qa-admin.trado.co.il/#/stores")
         print("-----------------------------------------")
         print("Test is started")
-        self.driver.implicitly_wait(30)
+        self.driver.implicitly_wait(10)
         self.driver.maximize_window()
 
         self.driver.get("https://qa-admin.trado.co.il/#/stores")
