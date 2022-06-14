@@ -2,6 +2,7 @@ from Locators.LStores import LocatorsStores
 from selenium.webdriver.common.by import By
 from time import sleep
 from random import *
+import pyautogui
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -28,6 +29,8 @@ class StoresPage(LocatorsStores):
         self.nameField=LocatorsStores.nameField
         self.websiteField=LocatorsStores.websiteField
         self.descriptionField=LocatorsStores.descriptionField
+        self.logoField=LocatorsStores.logoField
+        self.logoPath=LocatorsStores.logoPath
         self.telephoneField=LocatorsStores.telephoneField
         self.emailField=LocatorsStores.emailField
         self.departmentField=LocatorsStores.departmentField
@@ -43,6 +46,14 @@ class StoresPage(LocatorsStores):
         self.updateButton=LocatorsStores.updateButton
         ##assert
         self.assName=LocatorsStores.assName
+        self.assAddress=LocatorsStores.assAddress
+        self.assEmail=LocatorsStores.assEmail
+        self.assBnNum=LocatorsStores.assBnNum
+        self.assPhone=LocatorsStores.assPhone
+        self.assError=LocatorsStores.assError
+        self.assErrorCity=LocatorsStores.assErrorCity
+        self.assErrorEmail=LocatorsStores.assErrorEmail
+        self.assErrorPhone=LocatorsStores.assErrorPhone
 
 
 
@@ -85,7 +96,6 @@ class StoresPage(LocatorsStores):
         self.driver.find_element(By.XPATH, self.apartmentField).clear()
 
 
-
     def click_addNewStore(self):
         self.driver.find_element(By.XPATH, self.addStoreButton).click()
 
@@ -101,6 +111,29 @@ class StoresPage(LocatorsStores):
 
     def click_update(self):
         self.driver.find_element(By.XPATH,self.updateButton).click()
+
+    ##assert functions
+
+    def verify_By_text(self,elmnt):
+        x = self.driver.find_element(By.XPATH, elmnt).text
+        return x
+
+    def verify_by_innerText(self,elmnt):
+        x = self.driver.find_element(By.XPATH, elmnt).get_attribute("innerText")
+        return x
+
+
+
+
+
+    # def upload_img(self):
+    #     self.driver.find_element(By.XPATH,self.logoField).click()
+    #     webDriverWait(self.driver,10).until(EC.element_to_be_clickable((By.XPATH, self.logoField)))
+    #     path= r"C:\Users\racha\Downloads\logoweb.jpg"
+    #     pyautogui.write(path,interval=0.25)
+    #     pyautogui.press("enter")
+
+
 
 
 
