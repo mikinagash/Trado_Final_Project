@@ -37,3 +37,17 @@ class Reports:
     leftscroldown = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/span[1]/span[1]/select[1]"
     # right months scroll down
     righhtscroldown = "//body[1]/div[1]/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/span[1]/span[3]/select[1]"
+
+
+
+
+
+    #=##==#= system ui
+    # עמוד משתמשים
+    systemuserspage = "//span[contains(text(),'משתמשי מערכת')]"
+    #  צד ימין למעלה לוגו עם שם דף
+    systemh4logotext = "//h4[contains(text(),'משתמשי מערכת')]"
+    # לחצן עם  שלוש מלבנים צד ימין למעלה
+    barsiconsystem = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[1]/div[1]/span[1]/span[1]/i[1]"
+    # שדה חיפוש
+    serchfieldsystem = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/span[1]/span[1]/div[1]/span[1]"

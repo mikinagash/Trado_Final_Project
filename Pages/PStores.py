@@ -115,7 +115,7 @@ class StoresPage(LocatorsStores):
     ##assert functions
 
     def verify_By_text(self,elmnt):
-        x = self.driver.find_element(By.XPATH, elmnt).text
+        x = self.driver.find_element(By.CSS_SELECTOR, elmnt).text
         return x
 
     def verify_by_innerText(self,elmnt):
