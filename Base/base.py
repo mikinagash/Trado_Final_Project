@@ -15,7 +15,6 @@ class Base:
         self.driver.implicitly_wait(10)
         self.driver.maximize_window()
 
-
         yield self.driver
         if self.driver is not None:
             print("-----------------------------------------")

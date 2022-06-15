@@ -11,5 +11,29 @@ class Reports:
     reportsPageButton = "//span[contains(text(),'Reports')]"
     datesbutton = "//div[@id='date_displey']"
     saveButton = "//button[contains(text(),'שמירה')]"
-    staticranges = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]"
 
+    # containn 2 elements
+    ltwofields = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/span"
+    # contain 6 elements - today/yesterday/currentweek/previuosweek/currentmonth/previousmonth
+    lrdrStaticRange = "//body[1]/div[1]/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/button"
+    # contain 35 elements
+    lrdrDays = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[2]/button"
+
+    # ui locators
+    tradologo = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[1]/div[1]/a[1]/img[1]"
+    reportsh4logo = "//h4[contains(text(),'Reports')]"
+    barsicon = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[1]/div[1]/span[1]/span[1]/i[1]"
+
+    # buttons left and right on the calendar
+    datesLeftButton = "//body[1]/div[1]/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/button[1]/i[1]"
+    datesRightButton = "//body[1]/div[1]/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/button[2]/i[1]"
+
+
+    # left and right  selected dates
+    datesLeftselected = "//body[1]/div[1]/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/span[1]/input[1]"
+    dateRightselected = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/span[2]/input[1]"
+
+    # left months scroll down
+    leftscroldown = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/span[1]/span[1]/select[1]"
+    # right months scroll down
+    righhtscroldown = "//body[1]/div[1]/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/span[1]/span[3]/select[1]"
