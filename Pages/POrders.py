@@ -1,7 +1,10 @@
 from selenium.webdriver.common.by import By
+from webdriver_manager.core import driver
 from Trado_Finel_Project.Locators.LOrders import OrdersElement
 from time import sleep
 from selenium.webdriver.common.keys import Keys
+from Trado_Finel_Project.Utils.Utils import Utils
+
 
 class OrdersPage(OrdersElement):
 
@@ -25,6 +28,8 @@ class OrdersPage(OrdersElement):
         self.update_weight = OrdersElement.weight
         self.change_to_on_delivery=OrdersElement.on_delivery
         self.reached = OrdersElement.Reached_destination
+        self.order_page = OrdersElement.enter_to_order_page
+        self.missing = OrdersElement.Missing_product
 
     def enter_phone_and_pass(self,phone,password):
         self.driver.find_element(By.XPATH, self.phoneField).send_keys(phone)
@@ -93,3 +98,31 @@ class OrdersPage(OrdersElement):
     def Reached_to_destination(self):
         self.driver.find_element(By.XPATH,self.Reached_destination).click()
         sleep(3)
+
+    def Enter_to_order_page(self):
+        self.driver.find_element(By.XPATH,self.order_page).click()
+
+    def miss_p(self):
+        self.driver.find_element(By.XPATH,self.missing).click()
+        sleep(2)
+
+    def chang_p(self):
+        self.driver.find_element(By.XPATH,self.change_product).click()
+        sleep(2)
+
+    def trado_logo(self):
+        value = self.driver.find_element(By.XPATH, self.logo).get_attribute("src")
+        return value
+
+    # def select_index(self, num):
+    #     self.driver.find_element(By.XPATH, self.change_quantity).click()
+    #     roles = self.driver.find_elements(By.XPATH,OrdersElement.quantity)
+    #     roles[num].click()
+
+    def assert_change_pallets(self):
+        name = self.driver.find_element(By.XPATH, OrdersElement.pallets_status).text
+        assert name == "סטטוס משטחים עודכן בהצלחה"
+
+    def assert_new_status(self):
+        name = self.driver.find_element(By.XPATH, OrdersElement.new_status).text
+        assert name == "סטטוס הזמנה עודכן בהצלחה"
