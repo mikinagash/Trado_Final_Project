@@ -3,12 +3,13 @@ from Pages.PReports import Report_Page
 import pytest
 from time import sleep
 import requests
+from Utils.Utils import Utils
 
 
 @pytest.mark.usefixtures('set_up')
 class Test_Reports(Base):
 
-    # # left to right clicks
+    # left to right clicks
     # def test_left_right(self):
     #     driver = self.driver
     #     reports = Report_Page(driver)
@@ -19,22 +20,29 @@ class Test_Reports(Base):
     #     reports.enterReports()
     #     reports.dates_button()
     #     sleep(1)
-        # value1 = reports.dates_right_selected()
-        # sleep(1)
-        # value2 = reports.dates_left_selected()
-        # print(value1)
-        # print(value2)+
+    #     value1 = reports.dates_right_selected()
+    #     sleep(1)
+    #     value2 = reports.dates_left_selected()
+    #     print(value1)
+    #     print(value2)
 
 
 
-    # move between dates category
+    # move between dates and verify the selected dates are displayed
     def test_something(self):
         driver = self.driver
         reports = Report_Page(driver)
         reports.open_reports_page()
         reports.datesButton()
-        reports.dates_static()
-
+        # save dates in different lists
+        value = reports.dates_static()
+        # compare dates from diffrent list
+        assert value[0][0][:4] == "היום" \
+               and value[0][1][:5] == "אתמול" \
+               and value[0][2][-8:-3] == value[1][2][:5] \
+               and value[0][3][-8:-3] == value[1][3][:5] \
+               and value[0][4][-8:-3] == value[1][4][:5] \
+               and value[0][5][-8:-3] == value[1][5][:5]
 
 
     def test_sel_quick(self):
@@ -42,11 +50,10 @@ class Test_Reports(Base):
         reports = Report_Page(driver)
         reports.open_reports_page()
         reports.datesButton()
-        # reports.selectyear()
+        reports.selectyear()
         sleep(2)
         reports.selectmonth(reports.leftscroldown,4)
         sleep(3)
-
 
 
     # verify logo img
@@ -90,25 +97,61 @@ class Test_Reports(Base):
         value = reports.save_button()
         assert value[0] == "38" and value[1] == "56" and value[2] == "שמירה"
 
-    # send api request when submiting dates
-    # def test_register_api(self):
-    #     url = "https://qa-api.trado.co.il/api/reports/fields"
-    #     myobj = {"store_id": "1010101011rh", "start_date": "2022-06-05T20:49:46.752Z",}
-    #     x = requests.post(url, data=myobj)
-    #     value = x.status_code
-    #     try:
-    #         assert value == 200
-    #     except AssertionError:
-    #         print("fail test")
-
-
-    def test_submit_date_api(self):
-        url = "https://qa-api.trado.co.il/api/reports/fields"
-        myobj = {"store_id": "1010101011rh", "start_date": "2022-06-05T20:49:46.752Z",}
-        x = requests.post(url, data=myobj)
-        value = x.status_code
-        assert value == 200
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+####################################################################################
+# ui sa ui  ui   ui   ui  ui
+
+
+    # verify logo img
+    def test_u1_pic(self):
+        driver = self.driver
+        reports = Report_Page(driver)
+        reports.open_system_page()
+        sleep(2)
+        img = reports.trado_logo_1()
+        assert img == "https://storage.cloud.google.com/trado_images/settings/value-2rnvbaw5joki7qm8ud?1607509995191"
+
+    # verify  button text and size
+    def test_u2_logo(self):
+        driver = self.driver
+        reports = Report_Page(driver)
+        reports.open_system_page()
+        value = reports.reports_h4_logo_system()
+        assert value[0] == "משתמשי מערכת" and value[1] == "26" and value[2] == "124"
+
+    # #  verify button size
+    def test_u3_barsicon(self):
+        driver = self.driver
+        reports = Report_Page(driver)
+        reports.open_system_page()
+        value = reports.bars_icon_system()
+        assert value[0] == "15" and value[1] == "15"
+
+    def test_u3_serchfield_system(self):
+        driver = self.driver
+        reports = Report_Page(driver)
+        reports.open_system_page()
+        value = reports.serch_system()

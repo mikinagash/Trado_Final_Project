@@ -6,8 +6,6 @@ from selenium.webdriver.support.ui import Select
 
 
 
-
-
 import Locators.LReports
 from Locators.LReports import Reports
 from selenium.webdriver.support import expected_conditions as EC
@@ -104,40 +102,20 @@ class Report_Page(Reports):
         return Height , Width ,vavlue
 
 
-    # unfinished
-    # random numbers from a to b
-    # def rnd(self,a,b):
-    #     n = randint(a,b)
-    #     return n
-
-    # click random element in objecet
-    # def dates_static(self):
-    #     s = self.driver.find_elements_by_xpath(self.staticranges)
-    #     i = randint(0,len(s))
-    #     return s[i].click() ,s[i].click(),s[i].click()
-    # click on all fields
-
-
-    # def dates_static(self):
-    #     s = self.driver.find_elements_by_xpath(self.lrdrStaticRange)
-    #     for i in range(len(s)):
-    #         s[i].click()
-    #         sleep(1)
-
-
-
-
-
-
     def dates_static(self):
         s = self.driver.find_elements_by_xpath(self.lrdrStaticRange)
         # b = self.driver.find_element(By.XPATH,self.datesbutton).get_attribute("innerHTML")
+        a = []
+        b = []
+        c = []
         for i in range(len(s)):
             s[i].click()
-            a = self.driver.find_element(By.XPATH, self.datesbutton).get_attribute("innerText")
-            b = self.driver.find_element(By.XPATH, self.datesLeftselected).get_attribute("value")
-            c = self.driver.find_element(By.XPATH, self.dateRightselected).get_attribute("value")
-            print(a)
+            a.append(self.driver.find_element(By.XPATH, self.datesbutton).get_attribute("innerText"))
+            b.append(self.driver.find_element(By.XPATH, self.datesLeftselected).get_attribute("value"))
+            c.append(self.driver.find_element(By.XPATH, self.dateRightselected).get_attribute("value"))
+        return a, b, c
+
+
     # 2 options, 0 = 2022 , 1 = 2021
     def selectyear(self):
         select = Select(self.driver.find_element_by_xpath(self.righhtscroldown))
@@ -149,6 +127,7 @@ class Report_Page(Reports):
     #     select = Select(self.driver.find_element_by_xpath(self.leftscroldown))
     #     select.select_by_index(11)
     # same function
+
     # 12 options,the current month is the limit for month selection
     def selectmonth(self,element,index):
         select = Select(self.driver.find_element_by_xpath(element))
@@ -167,3 +146,53 @@ class Report_Page(Reports):
 
 
 
+
+
+
+
+
+
+
+
+
+
+##############------------------------------------------------------------------#######################
+
+    def enterSystem(self):
+        self.driver.find_element(By.XPATH,self.systemuserspage).click()
+
+    def open_system_page(self):
+        driver = self.driver
+        reports = Report_Page(driver)
+        reports.enter_phone()
+        reports.click_clickSend()
+        sleep(0.5)
+        reports.enter_passwordField()
+        reports.click_clickSend()
+        reports.enterSystem()
+
+
+
+
+    # extract photo url from the logo
+    def trado_logo_1(self):
+        value = self.driver.find_element(By.XPATH,self.tradologo).get_attribute("src")
+        return value
+
+
+    def reports_h4_logo_system(self):
+        value = self.driver.find_element(By.XPATH,self.systemh4logotext).get_attribute("innerHTML")
+        Height = self.driver.find_element(By.XPATH, self.systemh4logotext).get_attribute("clientHeight")
+        Width = self.driver.find_element(By.XPATH, self.systemh4logotext).get_attribute("clientWidth")
+        return value ,Height ,Width
+
+
+
+    def bars_icon_system(self):
+        Height = self.driver.find_element(By.XPATH, self.barsicon).get_attribute("clientHeight")
+        Width = self.driver.find_element(By.XPATH, self.barsicon).get_attribute("clientWidth")
+        return Height , Width
+
+    def serch_system(self):
+        value = self.driver.find_element(By.XPATH,self.tradologo).get_attribute("src")
+        return value

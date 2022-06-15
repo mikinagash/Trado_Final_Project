@@ -7,12 +7,12 @@ class Utils():
     def __init__(self,driver):
         self.driver = driver
 
-    def validtion(self,expected, actual,pic):
+    def validtion(self,expected, actual):
         driver = self.driver
         try:
             assert expected == actual
         except Exception:
-            allure.attach(driver.get_screenshot_as_png(), driver.save_screenshot(pic),
+            allure.attach(driver.get_screenshot_as_png(), driver.save_screenshot("screemshot"),
                           attachment_type=allure.attachment_type.PNG)
 
 
