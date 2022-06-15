@@ -1,5 +1,11 @@
 from selenium.webdriver.common.by import By
 from time import *
+from random import randint
+from selenium import webdriver
+from selenium.webdriver.support.ui import Select
+
+
+
 
 
 import Locators.LReports
@@ -51,7 +57,7 @@ class Report_Page(Reports):
 
     # static ranges of calendar (incomplete)
     def staticRange(self):
-        self.driver.find_element(By.XPATH,self.staticranges).click()
+        self.driver.find_element(By.XPATH,self.lrdrStaticRange).click()
 
 
     # click dates button
@@ -97,19 +103,59 @@ class Report_Page(Reports):
         vavlue = self.driver.find_element(By.XPATH, self.saveButton).get_attribute("innerHTML")
         return Height , Width ,vavlue
 
-    # unfinished
-    # extract dates from the box
 
-    # def dates_left_selected(self):
-    #     v = self.driver.find_element(By.XPATH,self.datesLeftselected).get_attribute("innerHTML")
-    #     return v
-    #
-    # def dates_left_selected(self):
-    #     WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.XPATH,self.datesLeftselected))).get_attribute("innerHTML")
-    #
-    # def dates_right_selected(self):
-    #     v = self.driver.find_element(By.XPATH,self.dates_right_selected()).get_attribute("innerHTML")
-    #     return  v
+    # unfinished
+    # random numbers from a to b
+    # def rnd(self,a,b):
+    #     n = randint(a,b)
+    #     return n
+
+    # click random element in objecet
+    # def dates_static(self):
+    #     s = self.driver.find_elements_by_xpath(self.staticranges)
+    #     i = randint(0,len(s))
+    #     return s[i].click() ,s[i].click(),s[i].click()
+    # click on all fields
+
+
+    # def dates_static(self):
+    #     s = self.driver.find_elements_by_xpath(self.lrdrStaticRange)
+    #     for i in range(len(s)):
+    #         s[i].click()
+    #         sleep(1)
+
+
+
+
+
+
+    def dates_static(self):
+        s = self.driver.find_elements_by_xpath(self.lrdrStaticRange)
+        # b = self.driver.find_element(By.XPATH,self.datesbutton).get_attribute("innerHTML")
+        for i in range(len(s)):
+            s[i].click()
+            a = self.driver.find_element(By.XPATH, self.datesbutton).get_attribute("innerText")
+            b = self.driver.find_element(By.XPATH, self.datesLeftselected).get_attribute("value")
+            c = self.driver.find_element(By.XPATH, self.dateRightselected).get_attribute("value")
+            print(a)
+    # 2 options, 0 = 2022 , 1 = 2021
+    def selectyear(self):
+        select = Select(self.driver.find_element_by_xpath(self.righhtscroldown))
+        select.select_by_index(1)
+
+
+    # 12 options,the current month is the limit for month selection
+    # def selectmonth(self):
+    #     select = Select(self.driver.find_element_by_xpath(self.leftscroldown))
+    #     select.select_by_index(11)
+    # same function
+    # 12 options,the current month is the limit for month selection
+    def selectmonth(self,element,index):
+        select = Select(self.driver.find_element_by_xpath(element))
+        select.select_by_index(index)
+
+
+
 
 
 

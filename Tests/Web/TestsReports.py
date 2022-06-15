@@ -32,12 +32,39 @@ class Test_Reports(Base):
 
 
 
+
+
+
+    # special test
+    def test_something_special(self):
+        driver = self.driver
+        reports = Report_Page(driver)
+        reports.open_reports_page()
+        reports.datesButton()
+        reports.dates_static()
+
+
+
+    def test_sel_quick(self):
+        driver = self.driver
+        reports = Report_Page(driver)
+        reports.open_reports_page()
+        reports.datesButton()
+        # reports.selectyear()
+        sleep(2)
+        reports.selectmonth(reports.leftscroldown,4)
+        sleep(3)
+
+
+
+    # verify logo img
     def test_ui_top_left_logo(self):
         driver = self.driver
         reports = Report_Page(driver)
         reports.open_reports_page()
         img = reports.trado_logo()
         assert img == "https://storage.cloud.google.com/trado_images/settings/value-2rnvbaw5joki7qm8ud?1607509995191"
+
 
     # verify  button text and size
     def test_ui_top_right_h4logo(self):
@@ -71,17 +98,25 @@ class Test_Reports(Base):
         value = reports.save_button()
         assert value[0] == "38" and value[1] == "56" and value[2] == "שמירה"
 
-
     # send api request when submiting dates
-    def test_register_api(self):
+    # def test_register_api(self):
+    #     url = "https://qa-api.trado.co.il/api/reports/fields"
+    #     myobj = {"store_id": "1010101011rh", "start_date": "2022-06-05T20:49:46.752Z",}
+    #     x = requests.post(url, data=myobj)
+    #     value = x.status_code
+    #     try:
+    #         assert value == 200
+    #     except AssertionError:
+    #         print("fail test")
+
+
+    def test_submit_date_api(self):
         url = "https://qa-api.trado.co.il/api/reports/fields"
         myobj = {"store_id": "1010101011rh", "start_date": "2022-06-05T20:49:46.752Z",}
         x = requests.post(url, data=myobj)
         value = x.status_code
-        try:
-            assert value == 200
-        except AssertionError:
-            print("fail test")
+        assert value == 200
+
 
 
 
