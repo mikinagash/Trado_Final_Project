@@ -38,7 +38,7 @@ class TestOrders(Base):
         a = Utils(driver)
         search = OrdersPage(driver)
         search.enter_order("גגג")
-        a.validtion("ddd","מציג \n לעמוד\nאין תוצאות\nסה״כ: 0 שורות",'..//Assert_pics')
+        a.validtion("ddd","מציג \n לעמוד\nאין תוצאות\nסה״כ: 0 שורות")
 
 
 
