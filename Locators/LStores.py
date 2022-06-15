@@ -29,11 +29,11 @@ class LocatorsStores:
     storeName= "//tbody/tr[1]/td[2]"
     updateButton= "//body/div[@id='root']/div[1]/div[4]/div[1]/div[1]/form[1]/input[1]"
     ##assert deatails in table
-    assEmail= "div.pages_pages main.pages_main div.pages_children div.table_tableScroll div.table_table table:nth-child(1) tbody:nth-child(2) tr:nth-child(1) > td:nth-child(2)"
+    assEmail= "div.pages_pages main.pages_main div.pages_children div.table_tableScroll div.table_table table:nth-child(1) tbody:nth-child(2) tr:nth-child(1) > td:nth-child(5)"
     assName= "div.pages_pages main.pages_main div.pages_children div.table_tableScroll div.table_table table:nth-child(1) tbody:nth-child(2) tr:nth-child(1) > td:nth-child(2)"
-    assBnNum= "//tbody/tr[5]/td[1]"
-    assPhone="//tbody/tr[2]/td[4]"
-    assAddress= "//tbody/tr[1]/td[7]"
+    assBnNum= "div.pages_pages main.pages_main div.pages_children div.table_tableScroll div.table_table table:nth-child(1) tbody:nth-child(2) tr:nth-child(1) > td:nth-child(1)"
+    assPhone= "div.pages_pages main.pages_main div.pages_children div.table_tableScroll div.table_table table:nth-child(1) tbody:nth-child(2) tr:nth-child(1) > td:nth-child(4)"
+    assAddress= "div.pages_pages main.pages_main div.pages_children div.table_tableScroll div.table_table table:nth-child(1) tbody:nth-child(2) tr:nth-child(1) > td:nth-child(7)"
     ##assert fields
     assError= "//body/div[@id='root']/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[2]/div[1]"
     assErrorCity= "//body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[10]/div[1]/div[1]/div[1]"
