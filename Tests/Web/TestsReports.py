@@ -1,13 +1,8 @@
-import Pages.PReports
-from selenium.webdriver.support.select import Select
 from Base.base import Base
 from Pages.PReports import Report_Page
 import pytest
 from time import sleep
 import requests
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
 
 
 @pytest.mark.usefixtures('set_up')
