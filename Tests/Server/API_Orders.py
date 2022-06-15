@@ -1,6 +1,7 @@
 import requests
 
 
+
 class TestSearch:
     url = "https://qa-api.trado.co.il/api/order/filter"
 
@@ -124,12 +125,6 @@ class TestSearch:
         assert res.status_code == 200
         print(res.status_code)
         print(response)
-
-
-
-
-
-
 
 
 

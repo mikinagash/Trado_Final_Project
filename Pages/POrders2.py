@@ -39,9 +39,9 @@ class OrdersPage(OrdersElement):
 
 
 
-    # def Error_msg(self):
-    #     self.error = self.driver.find_element(By.XPATH, self.error_msg).get_attribute("innerText")
-    #     return self.error
+    def Error_msg(self):
+        self.error = self.driver.find_element(By.XPATH, self.error_msg).get_attribute("innerText")
+        return self.error
 
 
 
@@ -53,7 +53,6 @@ class OrdersPage(OrdersElement):
 
 
     def export_files_received_order(self):
-        self.driver.find_element(By.XPATH, self.ready_path).click()
         WebDriverWait(self.driver, 15).until(
             EC.presence_of_element_located((By.XPATH, self.export)))
         self.driver.find_element(By.XPATH, self.export).click()
