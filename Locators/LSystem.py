@@ -24,27 +24,27 @@ class SystemElement:
 
     search_field = "//span[1]/span[1]/div[1]/input[1]"
 
-    first_name_user = "//td[contains(text(),'סלמון')]"
+    first_name_user = "div.pages_pages main.pages_main div.pages_children div.table_tableScroll div.table_table table:nth-child(1) tbody:nth-child(2) tr:nth-child(1) > td:nth-child(1)"
 
-    first_name_ = "סלמון"
+    first_name_ = "ייהלם"
 
-    last_name_user = "//td[contains(text(),'טסמה')]"
+    last_name_user = "div.pages_pages main.pages_main div.pages_children div.table_tableScroll div.table_table table:nth-child(1) tbody:nth-child(2) tr:nth-child(1) > td:nth-child(2)"
 
-    last_name_ = "טסמה"
+    last_name_ = "תהיי רצינית אושרת!"
 
-    email_user = "//td[normalize-space()='gg@hh.com']"
+    email_user = "div.pages_pages main.pages_main div.pages_children div.table_tableScroll div.table_table table:nth-child(1) tbody:nth-child(2) tr:nth-child(1) > td:nth-child(3)"
 
-    email_ = "gg@hh.com"
+    email_ = "doa2r@g2mail.com"
 
-    phone_user = "//td[normalize-space()='0547877241']"
+    phone_user = "div.pages_pages main.pages_main div.pages_children div.table_tableScroll div.table_table table:nth-child(1) tbody:nth-child(2) tr:nth-child(1) > td:nth-child(4)"
 
-    phone_ = "0547877241"
+    phone_ = "0556622938"
 
-    role_user = "//td[normalize-space()='owner']"
+    role_user = "div.pages_pages main.pages_main div.pages_children div.table_tableScroll div.table_table table:nth-child(1) tbody:nth-child(2) tr:nth-child(1) > td:nth-child(5)"
 
     role_ = "owner"
 
-    authorization_user = "//th[contains(text(),'הרשאה')]"
+    authorization_user = "div.pages_pages main.pages_main div.pages_children div.table_tableScroll div.table_table table:nth-child(1) tbody:nth-child(2) tr:nth-child(1) > td:nth-child(6)"
 
     authorization_ = "write"
 
@@ -62,7 +62,7 @@ class SystemElement:
 
     # element editing system user
 
-    click_details = "(//td[normalize-space()='salmon@walla.com'])[1]"
+    click_details = "//tbody/tr[11]/td[1]"
 
     editing_firstname_user = "(//input[@placeholder='שם פרטי'])[1]"
     new_firstname = "סלמוןט"
@@ -81,13 +81,15 @@ class SystemElement:
 
 
     editing_authorization_user = "(//input[@placeholder='הרשאה'])[1]"
-    index_authorization = "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[6]/div[1]/span"
+    index_authorization = "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[6]/div[1]/span[1]/div[2]/div[1]/div"
 
 
 
     editing_stores_user = "(//input[@placeholder='חנויות'])[1]"
-    new_store_name = ""
+    new_store_name = "סלמון ובניו"
 
     btn_editing = "(//input[@value='עדכון'])[1]"
+
+    new_user_edition = "(//td[contains(text(),'סלמוןט')])[1]"
 
 
