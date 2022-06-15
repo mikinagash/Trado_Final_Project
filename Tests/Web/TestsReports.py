@@ -32,11 +32,8 @@ class Test_Reports(Base):
 
 
 
-
-
-
-    # special test
-    def test_something_special(self):
+    # move between dates category
+    def test_something(self):
         driver = self.driver
         reports = Report_Page(driver)
         reports.open_reports_page()
