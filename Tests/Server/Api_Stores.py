@@ -28,8 +28,7 @@ class Test_storeSearch:
                 assert res.elapsed.total_seconds() < 5
                 assert (response['status']) == 200
                 assert (response['payload']['count']) == 1
-                ass
-                print(response)
+                assert (response['payload']['data'][0]['bnNumber'])== 514157544
 
 
 #33
