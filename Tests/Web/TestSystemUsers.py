@@ -124,7 +124,7 @@ class Test_Editing_system_user(Base):
         system.Entrance()
         # system.Btn_serch()
         system.click_editing_system_user()
-        system.editing_firstname('טסמה')
+        system.editing_firstname('salmon')
         system.editing_lastname('סלמון')
         system.editing_email('tasama@gmail.com')
         system.editing_phone('9513247812')
@@ -134,7 +134,7 @@ class Test_Editing_system_user(Base):
         system.editing_Btn_click()
         sleep(6)
         new_edition_user_by_name = driver.find_element(By.XPATH, EL.click_details).text
-        assert new_edition_user_by_name == 'טסמה'
+        assert new_edition_user_by_name == 'salmon'
 
     def test_valid_update_With_required_fields(self):
         driver = self.driver
@@ -176,7 +176,7 @@ class Test_Editing_system_user(Base):
         system.editing_stores('a')
         system.editing_Btn_click()
         sleep(3)
-        new_edition_user_by_name = driver.find_element(By.XPATH, "//table[1]/tbody[1]/tr[11]/td[2]").text
+        new_edition_user_by_name = driver.find_element(By.XPATH, "//table[1]/tbody[1]/tr[12]/td[2]").text
         assert new_edition_user_by_name == 'tasama'
         sleep(3)
 
@@ -190,7 +190,7 @@ class Test_Editing_system_user(Base):
         system.editing_stores('a')
         system.editing_Btn_click()
         sleep(3)
-        new_edition_user_by_name = driver.find_element(By.XPATH, "//tbody[1]/tr[11]/td[3]").text
+        new_edition_user_by_name = driver.find_element(By.XPATH, "//tbody[1]/tr[12]/td[3]").text
         assert new_edition_user_by_name == 'salon@gmail.com'
         sleep(3)
 
@@ -204,7 +204,7 @@ class Test_Editing_system_user(Base):
         system.editing_stores('a')
         system.editing_Btn_click()
         sleep(3)
-        new_edition_user_by_name = driver.find_element(By.XPATH, "//table[1]/tbody[1]/tr[11]/td[4]").text
+        new_edition_user_by_name = driver.find_element(By.XPATH, "//table[1]/tbody[1]/tr[12]/td[4]").text
         assert new_edition_user_by_name == '1234567894'
         sleep(3)
 
@@ -218,7 +218,7 @@ class Test_Editing_system_user(Base):
         system.editing_stores('a')
         system.editing_Btn_click()
         sleep(3)
-        new_edition_user_by_name = driver.find_element(By.XPATH, "//table[1]/tbody[1]/tr[11]/td[5]").text
+        new_edition_user_by_name = driver.find_element(By.XPATH, "//table[1]/tbody[1]/tr[12]/td[5]").text
         assert new_edition_user_by_name == 'מנהל' or 'admin' or 'חנות' or 'owner' or 'מסירה'
         sleep(3)
 
@@ -231,8 +231,8 @@ class Test_Editing_system_user(Base):
         system.editing_authorization(1)
         system.editing_stores('a')
         system.editing_Btn_click()
-        new_edition_user_by_name = driver.find_element(By.XPATH, "//table[1]/tbody[1]/tr[11]/td[6]").text
-        assert new_edition_user_by_name == 'write'
+        new_edition_user_by_name = driver.find_element(By.XPATH, "//table[1]/tbody[1]/tr[12]/td[6]").text
+        assert new_edition_user_by_name == 'write' or "כתיבה"
         sleep(1)
 
     def test_valid_update_stores(self):
@@ -243,8 +243,8 @@ class Test_Editing_system_user(Base):
         system.click_editing_system_user()
         system.editing_stores('salmon')
         system.editing_Btn_click()
-        sleep(1)
-        new_edition_user_by_name = driver.find_element(By.XPATH, "//table[1]/tbody[1]/tr[11]/td[7]").text
+        sleep(6)
+        new_edition_user_by_name = driver.find_element(By.XPATH, "//table[1]/tbody[1]/tr[12]/td[7]").text
         assert new_edition_user_by_name == 'salmon'
         sleep(1)
 
@@ -261,12 +261,15 @@ class Test_Editing_system_user(Base):
         system.editing_role(0)
         system.editing_authorization(0)
         system.editing_stores('')
-        system.editing_Btn_click()
+        # system.editing_Btn_click()
         sleep(1)
         system.error_message_firstname()
         system.error_message_lastname()
         system.error_message_email()
         system.error_message_phone_()
+        system.error_message_stores_()
+        sleep(2)
+        system.editing_Btn_click()
         assert system.editing_error_messege_firstname() == 'זהו שדה חובה.'
 
     def test_invalid_Update_required_fields_is_null(self):
@@ -277,15 +280,19 @@ class Test_Editing_system_user(Base):
         system.editing_firstname('')
         system.editing_lastname('')
         system.editing_email('')
-        system.editing_phone('1234567858')
+        system.editing_phone('13245')
         system.editing_role(2)
         system.editing_authorization(0)
         system.editing_stores('')
-        system.editing_Btn_click()
+        # system.editing_Btn_click()
         sleep(1)
         system.error_message_firstname()
         system.error_message_lastname()
         system.error_message_email()
+        system.error_message_stores_()
+        sleep(8)
+        system.editing_Btn_click()
+        sleep(6)
         assert system.editing_error_messege_firstname() == 'זהו שדה חובה.'
 
     def test_invalid_Update_firstname_is_null(self):
@@ -300,9 +307,11 @@ class Test_Editing_system_user(Base):
         system.editing_role(2)
         system.editing_authorization(0)
         system.editing_stores('xknui')
-        system.editing_Btn_click()
+        # system.editing_Btn_click()
         sleep(1)
         system.error_message_firstname()
+        sleep(1)
+        system.editing_Btn_click()
         assert system.editing_error_messege_firstname() == 'זהו שדה חובה.'
 
     def test_invalid_Update_lastname_is_null(self):
@@ -317,9 +326,11 @@ class Test_Editing_system_user(Base):
         system.editing_role(2)
         system.editing_authorization(0)
         system.editing_stores('xknui')
-        system.editing_Btn_click()
+        # system.editing_Btn_click()
         sleep(1)
         system.error_message_lastname()
+        sleep(1)
+        system.editing_Btn_click()
         assert system.editing_error_messege_lastname() == 'זהו שדה חובה.'
 
     def test_invalid_Update_email_is_null(self):
@@ -334,9 +345,11 @@ class Test_Editing_system_user(Base):
         system.editing_role(2)
         system.editing_authorization(0)
         system.editing_stores('xknui')
+        # system.editing_Btn_click()
+        # sleep(1)
+        system.error_message_email()
         system.editing_Btn_click()
         sleep(1)
-        system.error_message_email()
         assert system.editing_error_messege_email() == 'זהו שדה חובה.'
 
     def test_invalid_Update_email_is_invalid(self):
@@ -351,11 +364,14 @@ class Test_Editing_system_user(Base):
         system.editing_role(2)
         system.editing_authorization(0)
         system.editing_stores('xknui')
+        # system.editing_Btn_click()
+        sleep(1)
+        system.error_message_email_invalid()
         system.editing_Btn_click()
         sleep(1)
         assert system.editing_error_messege_email() == "אני רוצה לכלול '@' בכתובת האימייל. ב-'sfaadsc' חסר '@'."
         sleep(2)
-        system.error_message_email_invalid()
+        # system.error_message_email_invalid()
         # assert system.editing_error_messege_email() == "אני רוצה לכלול '@' בכתובת האימייל. ב-'sfaadsc' חסר '@'."
 
 
@@ -375,20 +391,20 @@ class Test_Editing_system_user(Base):
         sleep(1)
         system.error_message_phone_()
 
-    # def test_invalid_Update_phone_is_null(self):
-    #     driver = self.driver
-    #     system = SystemPage(driver)
-    #     system.Entrance()
-    #     system.click_editing_system_user()
-    #     system.editing_firstname('xfad')
-    #     system.editing_lastname('safas')
-    #     system.editing_email('salmon@gmai.com')
-    #     system.editing_phone('1234')
-    #     system.editing_role(2)
-    #     system.editing_authorization(0)
-    #     system.editing_stores('xknui')
-    #     system.editing_Btn_click()
-    #     sleep(3)
+    def test_invalid_Update_phone_is_null(self):
+        driver = self.driver
+        system = SystemPage(driver)
+        system.Entrance()
+        system.click_editing_system_user()
+        system.editing_firstname('xfad')
+        system.editing_lastname('safas')
+        system.editing_email('salmon@gmai.com')
+        system.editing_phone('1234')
+        system.editing_role(2)
+        system.editing_authorization(0)
+        system.editing_stores('xknui')
+        system.editing_Btn_click()
+        sleep(3)
 
     def test_invalid_Update_store_is_null(self):
         driver = self.driver
@@ -402,8 +418,46 @@ class Test_Editing_system_user(Base):
         system.editing_role(2)
         system.editing_authorization(0)
         system.editing_stores('')
+        # system.editing_Btn_click()
+        # sleep(1)
+        system.error_message_stores_()
         system.editing_Btn_click()
         sleep(1)
-        system.error_message_stores_()
-        sleep(1)
         assert system.editing_error_messege_stores() == 'זהו שדה חובה.'
+
+
+class Test_add_a_user(Base):
+
+    def test_valid_add_user(self):
+        driver = self.driver
+        system = SystemPage(driver)
+        system.Entrance()
+        system.click_add_but()
+        system.editing_firstname('salmontasama')
+        system.editing_lastname('safas')
+        system.editing_email('salmon@gmai.com')
+        system.editing_phone('1235678934')
+        system.editing_role(2)
+        system.editing_authorization(0)
+        system.editing_stores('salmon')
+        sleep(6)
+        # system.click_add()
+        add_user = self.driver.find_element(By.XPATH, EL.lin_add_user).text
+        assert add_user == 'salmontasama'
+        sleep(9)
+
+
+    def test_valid_add_user_required_fields(self):
+        driver = self.driver
+        system = SystemPage(driver)
+        system.Entrance()
+        system.click_add_but()
+        system.editing_firstname('xfad')
+        system.editing_lastname('safas')
+        system.editing_email('salmon@gmai.com')
+        system.editing_stores('salmon')
+        sleep(6)
+        system.click_add()
+        add_user = self.driver.find_element(By.XPATH, EL.lin_add_user).text
+        assert add_user == 'xfad'
+        sleep(9)

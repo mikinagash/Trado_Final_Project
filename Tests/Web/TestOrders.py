@@ -1,5 +1,4 @@
 from Base.base import Base
-from selenium.webdriver.common.by import By
 
 from Locators.LOrders2 import OrdersElement
 from Utils.Utils import Utils
@@ -32,16 +31,14 @@ class TestOrders(Base):
         search = OrdersPage(driver)
         search.enter_order("!#$%&")
 
+
+
     def test_search_order_incorrect_by_first_name(self):
         driver = self.driver
         a = Utils(driver)
         search = OrdersPage(driver)
         search.enter_order("גגג")
-        asrt = self.driver.find_element(By.XPATH, OrdersElement.error_msg).text
-        a.validtion(asrt,"מציג \n לעמוד\nאין תוצאות\nסה״כ: 0 שורות","pic")
-        print(asrt)
-
-
+        a.validtion("ddd","מציג \n לעמוד\nאין תוצאות\nסה״כ: 0 שורות")
 
 
 
@@ -50,7 +47,7 @@ class TestOrders(Base):
         driver = self.driver
         a = Utils(driver)
         file = OrdersPage(driver)
-        file.downloud_file()
+        file.export_files_received_order()
 
 
 

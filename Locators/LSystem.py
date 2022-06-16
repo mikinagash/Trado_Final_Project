@@ -1,5 +1,5 @@
 #######    # system users page elements #     ##########
-import self as self
+# import self as self
 from selenium.webdriver.common.by import By
 
 
@@ -62,7 +62,7 @@ class SystemElement:
 
     # element editing system user
 
-    click_details = "//tbody/tr[11]/td[1]"
+    click_details = "//tbody/tr[12]/td[1]"
 
     editing_firstname_user = "(//input[@placeholder='שם פרטי'])[1]"
     new_firstname = "סלמוןט"
@@ -88,8 +88,12 @@ class SystemElement:
     editing_stores_user = "(//input[@placeholder='חנויות'])[1]"
     new_store_name = "סלמון ובניו"
 
-    btn_editing = "(//input[@value='עדכון'])[1]"
+    btn_editing = "//form[1]/input[1]"
 
     new_user_edition = "(//td[contains(text(),'סלמוןט')])[1]"
 
-
+###############
+    click_Add_button = "//main[1]/div[2]/div[1]/div[1]/div[1]/span[1]/i[1]"
+    click_add_user_ = "//span[contains(text(),'הוספה')]"
+    click_add = "//form[1]/input[1]"
+    lin_add_user = "//tbody/tr[1]/td[1]"
