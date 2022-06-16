@@ -1,4 +1,6 @@
 import pymongo
+
+
 class MongoDB:
     def __init__(self,db,col):
         self.client = pymongo.MongoClient(
@@ -11,3 +13,4 @@ class MongoDB:
 
 
 MongoDB("trado_qa","orders").find()
+MongoDB("trado_qa","stores").find()

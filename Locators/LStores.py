@@ -40,6 +40,7 @@ class LocatorsStores:
     assErrorCity= "//body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[10]/div[1]/div[1]/div[1]"
     assErrorEmail= "//body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[8]/div[1]"
     assErrorPhone= "//div[contains(text(),'מס׳ טלפון לא תקין')]"
+    assDuplicate= "//body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/form[1]/div[2]"
     ##upload photo
     logoField= "//body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[5]/div[1]/input[1]"
     logoPath= r'//Users/racha/Downloads/logoweb.jpg'

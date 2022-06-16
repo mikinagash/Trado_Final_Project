@@ -2,13 +2,7 @@ from Locators.LStores import LocatorsStores
 from selenium.webdriver.common.by import By
 from time import sleep
 from random import *
-import pyautogui
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.select import Select
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+
 
 class StoresPage(LocatorsStores):
 
@@ -55,17 +49,15 @@ class StoresPage(LocatorsStores):
         self.assErrorEmail=LocatorsStores.assErrorEmail
         self.assErrorPhone=LocatorsStores.assErrorPhone
         self.assNoResults=LocatorsStores.assNoResults
+        self.assDuplicate=LocatorsStores.assDuplicate
 
     def add_store(self):
         self.driver.find_element(By.XPATH, self.addButton).click()
         self.driver.find_element(By.XPATH, self.adding).click()
 
 
-    # def click_add_buttonn(self):
-    #     self.driver.find_element(By.XPATH, self.addButton).click()
-    #
-    # def click_adding(self):
-    #     self.driver.find_element(By.XPATH, self.adding).click()
+    def click_on_feild(self):
+       self.driver.find_element(By.XPATH, self.nameField).click()
 
     def add_store_form_optionalFields(self,url,des,phoneNum,email,apt):
         self.bnNum = randint(100, 10000000000)
@@ -135,16 +127,6 @@ class StoresPage(LocatorsStores):
         x= self.driver.find_element(By.XPATH,self.assNoResults).text
         return x
 
-
-
-
-
-    # def upload_img(self):
-    #     self.driver.find_element(By.XPATH,self.logoField).click()
-    #     webDriverWait(self.driver,10).until(EC.element_to_be_clickable((By.XPATH, self.logoField)))
-    #     path= r"C:\Users\racha\Downloads\logoweb.jpg"
-    #     pyautogui.write(path,interval=0.25)
-    #     pyautogui.press("enter")
 
 
 

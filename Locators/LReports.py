@@ -52,4 +52,4 @@ class Reports:
     # שדה חיפוש
     serchfieldsystem = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/span[1]"
     # טבלה של פרטים
-    details_table = "//thead/tr[1]"
+    details_table = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[2]/div[1]/div[2]/div[1]"

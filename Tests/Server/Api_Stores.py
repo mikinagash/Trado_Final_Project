@@ -14,7 +14,11 @@ class Test_storeSearch:
                 res = requests.post(self.url,data=body)
                 response = res.json()
                 assert res.elapsed.total_seconds() < 10
-                assert res.status_code == 200
+                assert (response['status']) == 200
+                assert (response['payload']['count']) == 2
+                assert (response['payload']['data'][0]['name'])== 'סופר כל רונן בע״מ'
+                assert (response['payload']['data'][1]['name']) == 'עסק בעמ'
+
 
 #32
         def test_Valid_response_when_search_ByStore_phone(self):
@@ -22,17 +26,21 @@ class Test_storeSearch:
                 res = requests.post(self.url,data=body)
                 response = res.json()
                 assert res.elapsed.total_seconds() < 5
-                assert res.status_code == 200
+                assert (response['status']) == 200
+                assert (response['payload']['count']) == 1
+                assert (response['payload']['data'][0]['bnNumber'])== 514157544
+
 
 #33
         def test_Valid_response_when_search_ByPartial_store_phone(self):
                 body = {"search": "05477"}
                 res = requests.post(self.url, data=body)
                 response = res.json()
-                assert res.elapsed.total_seconds() < 5
+                assert res.elapsed.total_seconds() < 60
                 assert res.status_code == 200
-                # assert response['active']== True
-                # print(response)
+                assert (response['status'])== 200
+                assert (response['payload']['count'])== 1
+
 
 #34
         def test_Valid_response_when_search_Bystore_email(self):
@@ -41,6 +49,12 @@ class Test_storeSearch:
                 response = res.json()
                 assert res.elapsed.total_seconds() < 5
                 assert res.status_code == 200
+                assert (response['status']) == 200
+                assert (response['payload']['count']) == 2
+                assert (response['payload']['data'][0]['name'])== 'tomil'
+                assert (response['payload']['data'][1]['name']) == 'tomi'
+
+
 
 
 #35
@@ -49,23 +63,32 @@ class Test_storeSearch:
                 res = requests.post(self.url, data=body)
                 response = res.json()
                 assert res.elapsed.total_seconds() < 5
-                assert res.status_code == 200
+                assert (response['status']) == 200
+                assert (response['payload']['count']) == 2
+                assert (response['payload']['data'][0]['name'])== "tomil"
+                assert (response['payload']['data'][1]['name'])== "tomi"
 
 #36
         def test_Valid_response_when_search_Bypartial_store_name(self):
                 body = {"search": "tomi"}
                 res = requests.post(self.url, data=body)
                 response = res.json()
-                assert res.elapsed.total_seconds() < 5
-                assert res.status_code == 200
+                assert res.elapsed.total_seconds() < 15
+                assert (response['status']) == 200
+                assert (response['payload']['count']) == 2
+                print(response['payload']['data'])
+                assert (response['payload']['data'][0]['email']) == 'netz@walla.com'
+                assert (response['payload']['data'][1]['email']) == 'netz@walla.com'
+
 
 #37
         def test_Invalid_response_when_search_Bystore_address(self):
                 body = {"search": "dor 13/45"}
                 res = requests.post(self.url, data=body)
                 response = res.json()
-                assert res.elapsed.total_seconds() < 5
-                assert res.status_code == 200
+                assert res.elapsed.total_seconds() < 15
+                assert (response['payload']['count'])==0
+                assert (response['status']) == 200
 
 #38
         def test_Invalid_response_when_search_Bystore_bnNum(self):
@@ -73,15 +96,17 @@ class Test_storeSearch:
                 res = requests.post(self.url, data=body)
                 response = res.json()
                 assert res.elapsed.total_seconds() < 5
-                assert res.status_code == 200
+                assert (response['status']) == 200
+                assert (response['payload']['count']) == 0
 
 #39
         def test_Invalid_response_when_search_Bystore_Departments(self):
                 body = {"search": "שוקולדים"}
                 res = requests.post(self.url, data=body)
                 response = res.json()
-                assert res.elapsed.total_seconds() < 5
-                assert res.status_code == 200
+                assert res.elapsed.total_seconds() < 15
+                assert (response['status']) == 200
+                assert (response['payload']['count']) == 0
 
 #40
         def test_Invalid_response_when_search_Bystore_CreatedDate(self):
@@ -89,15 +114,18 @@ class Test_storeSearch:
                 res = requests.post(self.url, data=body)
                 response = res.json()
                 assert res.elapsed.total_seconds() < 5
-                assert res.status_code == 200
+                assert (response['status']) == 200
+                assert (response['payload']['count']) == 0
 
 #41
         def test_Invalid_response_when_search_Bystore_CreatedHour(self):
                 body = {"search":"21:00"}
                 res = requests.post(self.url, data=body)
                 response = res.json()
-                assert res.elapsed.total_seconds() < 5
-                assert res.status_code == 200
+                assert res.elapsed.total_seconds() < 15
+                assert (response['status']) == 200
+                assert (response['payload']['count']) == 0
+
 
 
 

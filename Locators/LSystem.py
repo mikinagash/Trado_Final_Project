@@ -97,3 +97,4 @@ class SystemElement:
     click_add_user_ = "//span[contains(text(),'הוספה')]"
     click_add = "//form[1]/input[1]"
     lin_add_user = "//tbody/tr[1]/td[1]"
+    error_message_pops_up = 'זהו שדה חובה.'
