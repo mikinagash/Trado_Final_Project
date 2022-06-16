@@ -23,7 +23,6 @@ class Test_Stores(Base):
         store.add_store_form_requiredFields("BB5","tel-aviv","hadar","12")
         store.click_addNewStore()
         asrt = store.verify_By_text(store.assName)
-        # asrt=self.driver.find_element(By.XPATH,store.assName).text
         results.validtion(asrt,"BB5","store1")
 
 
