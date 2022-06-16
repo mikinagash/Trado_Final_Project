@@ -35,9 +35,10 @@ class OrdersElement:
     pyType = "//tbody/tr[1]/td[11]"
     no_result = "/html[1]/body[1]/div[1]/div[1]/div[2]/main[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]"
     switch = "/html[1]/body[1]/div[1]/div[1]/div[2]/main[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/div[3]"
-    order_ready = "//tbody/tr[1]/td[2]"
+    order_ready = "//body/div[@id='root']/div[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[2]"
+    change_product_ = "//body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/h4[1]"
     order_num_search = "//tbody/tr/td[1]"
-    Dis_details = "//body/div[@id='root']/div[1]/div[4]/div[1]/h4[1]"
+    Dis_details = "//span[contains(text(),'מספר הזמנה: 487')]"
     new_status = "//div[contains(text(),'סטטוס הזמנה עודכן בהצלחה')]"
     pallets_status="//div[contains(text(),'סטטוס משטחים עודכן בהצלחה')]"
 

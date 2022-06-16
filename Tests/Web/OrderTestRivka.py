@@ -137,6 +137,7 @@ class Test_Orders(Base):
         name = driver.find_element(By.XPATH, OrdersElement.Dis_details).text
         assert name == " מספר הזמנה: 487"
         a.validtion(" מספר הזמנה: 487", OrdersElement.order_ready)
+        #BUG
 
     def test_change_product_quantity(self):
         driver = self.driver
@@ -215,6 +216,7 @@ class Test_Orders(Base):
         name = driver.find_element(By.XPATH, OrdersElement.Missing_product).text
         assert name == "חסר"
         a.validtion("חסר", OrdersElement.order_ready)
+        #BUG
 
     def test_chang_product(self):
         driver = self.driver
@@ -230,8 +232,8 @@ class Test_Orders(Base):
 
         name = driver.find_element(By.XPATH, OrdersElement.change_product_windows).text
         assert name == "החלפת המוצר: שמן למון קוש"
-
-        a.validtion("החלפת המוצר: שמן למון קוש", OrdersElement.order_ready)
+        a.validtion("החלפת המוצר: שמן למון קוש", OrdersElement.change_product_)
+        # BUG
 
 
     def test_ui_trado_logo(self):
@@ -247,12 +249,3 @@ class Test_Orders(Base):
         name = driver.find_element(By.XPATH, OrdersElement.orders).text
         assert name == "הזמנות"
         print(name)
-
-
-    # def test_ui_up_table(self):
-    #     driver = self.driver
-    #     self.test_connect_to_site()
-    #     name = driver.find_element(By.XPATH, OrdersElement.up_table).text
-    #     assert name ==
-    #
-    #         print(name)
