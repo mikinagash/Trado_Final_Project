@@ -49,17 +49,15 @@ class StoresPage(LocatorsStores):
         self.assErrorEmail=LocatorsStores.assErrorEmail
         self.assErrorPhone=LocatorsStores.assErrorPhone
         self.assNoResults=LocatorsStores.assNoResults
+        self.assDuplicate=LocatorsStores.assDuplicate
 
     def add_store(self):
         self.driver.find_element(By.XPATH, self.addButton).click()
         self.driver.find_element(By.XPATH, self.adding).click()
 
 
-    # def click_add_buttonn(self):
-    #     self.driver.find_element(By.XPATH, self.addButton).click()
-    #
-    # def click_adding(self):
-    #     self.driver.find_element(By.XPATH, self.adding).click()
+    def click_on_feild(self):
+       self.driver.find_element(By.XPATH, self.nameField).click()
 
     def add_store_form_optionalFields(self,url,des,phoneNum,email,apt):
         self.bnNum = randint(100, 10000000000)
