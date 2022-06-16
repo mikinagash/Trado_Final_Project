@@ -57,7 +57,7 @@ class TestOrders(Base):
         a = Utils(driver)
         search = OrdersPage(driver)
         search.enter_order("גרובר")
-        sleep(3)
+
 
 
 
