@@ -193,14 +193,6 @@ class Report_Page(Reports):
         Width = self.driver.find_element(By.XPATH, self.barsicon).get_attribute("clientWidth")
         return Height , Width
 
-
-    def serch_field(self):
-        Height = self.driver.find_element(By.XPATH, self.serchfieldsystem).get_attribute("clientHeight")
-        Width = self.driver.find_element(By.XPATH, self.serchfieldsystem).get_attribute("clientWidth")
-        return Height, Width
-
-
-    def information_table(self):
-        value = self.driver.find_element(By.XPATH, self.details_table).get_attribute("innerText")
+    def serch_system(self):
+        value = self.driver.find_element(By.XPATH,self.tradologo).get_attribute("src")
         return value
-
