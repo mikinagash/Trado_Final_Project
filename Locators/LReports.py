@@ -50,4 +50,6 @@ class Reports:
     # לחצן עם  שלוש מלבנים צד ימין למעלה
     barsiconsystem = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[1]/div[1]/span[1]/span[1]/i[1]"
     # שדה חיפוש
-    serchfieldsystem = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/span[1]/span[1]/div[1]/span[1]"
+    serchfieldsystem = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/span[1]"
+    # טבלה של פרטים
+    details_table = "//thead/tr[1]"

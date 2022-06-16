@@ -461,3 +461,27 @@ class Test_add_a_user(Base):
         add_user = self.driver.find_element(By.XPATH, EL.lin_add_user).text
         assert add_user == 'xfad'
         sleep(9)
+
+
+    def test_invalid_add_user_all_fielde_is_null(self):
+        driver = self.driver
+        system = SystemPage(driver)
+        system.Entrance()
+        system.click_add_but()
+        system.editing_firstname('')
+        system.editing_lastname('')
+        system.editing_email('')
+        system.editing_phone('')
+        system.editing_role(2)
+        system.editing_authorization(0)
+        system.editing_stores('')
+        system.error_message_firstname()
+        system.error_message_lastname()
+        system.error_message_email()
+        system.error_message_phone_()
+        system.error_message_stores_()
+        sleep(6)
+        system.click_add()
+        add_user = self.driver.find_element(By.XPATH, EL.lin_add_user).text
+        assert add_user == 'salmontasama'
+        sleep(9)
