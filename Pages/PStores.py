@@ -54,6 +54,7 @@ class StoresPage(LocatorsStores):
         self.assErrorCity=LocatorsStores.assErrorCity
         self.assErrorEmail=LocatorsStores.assErrorEmail
         self.assErrorPhone=LocatorsStores.assErrorPhone
+        self.assNoResults=LocatorsStores.assNoResults
 
 
 
@@ -63,15 +64,19 @@ class StoresPage(LocatorsStores):
     def click_adding(self):
         self.driver.find_element(By.XPATH, self.adding).click()
 
-    def add_store_form_optionalFields(self,url,des,phoneNum,email,depart,apt):
+    def add_store_form_optionalFields(self,url,des,phoneNum,email,apt):
         self.bnNum = randint(100, 10000000000)
         self.driver.find_element(By.XPATH, self.bnNumField).send_keys(self.bnNum)
         self.driver.find_element(By.XPATH, self.websiteField).send_keys(url)
         self.driver.find_element(By.XPATH, self.descriptionField).send_keys(des)
         self.driver.find_element(By.XPATH, self.telephoneField).send_keys(phoneNum)
         self.driver.find_element(By.XPATH, self.emailField).send_keys(email)
-        self.driver.find_element(By.XPATH, self.departmentField).send_keys(depart)
         self.driver.find_element(By.XPATH, self.apartmentField).send_keys(apt)
+
+    def department(self, num):
+        self.driver.find_element(By.XPATH, self.departmentField).click()
+        depart = self.driver.find_elements(By.XPATH, self.selectDepart)
+        depart[num].click()
 
 
     def add_store_form_requiredFields(self,name,city,street,buildNum):
@@ -107,7 +112,7 @@ class StoresPage(LocatorsStores):
 ##update store deatils
 
     def click_on_store_name(self):
-        self.driver.find_element(By.XPATH,self.storeName).click()
+        self.driver.find_element(By.CSS_SELECTOR,self.storeName).click()
 
     def click_update(self):
         self.driver.find_element(By.XPATH,self.updateButton).click()
@@ -118,8 +123,13 @@ class StoresPage(LocatorsStores):
         x = self.driver.find_element(By.CSS_SELECTOR, elmnt).text
         return x
 
+
     def verify_by_innerText(self,elmnt):
         x = self.driver.find_element(By.XPATH, elmnt).get_attribute("innerText")
+        return x
+
+    def verify_NoResults(self):
+        x= self.driver.find_element(By.XPATH,self.assNoResults).text
         return x
 
 
