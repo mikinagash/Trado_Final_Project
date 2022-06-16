@@ -19,11 +19,12 @@ class Test_Stores(Base):
         store= StoresPage(driver)
         results= Utils(driver)
         store.add_store()
+        sleep(2)
         store.add_store_form_requiredFields("BB5","tel-aviv","hadar","12")
         store.click_addNewStore()
         asrt = store.verify_By_text(store.assName)
         # asrt=self.driver.find_element(By.XPATH,store.assName).text
-        results.validtion(asrt,"BB5","1")
+        results.validtion(asrt,"BB5","store1")
 
 
 #2
@@ -31,8 +32,7 @@ class Test_Stores(Base):
         driver = self.driver
         store = StoresPage(driver)
         results = Utils(driver)
-        store.click_add_buttonn()
-        store.click_adding()
+        store.add_store()
         store.add_store_form_optionalFields("wwwww","hello","0554356542","tete@walla.com","89")
         store.department(4)
         store.add_store_form_requiredFields("shula", "telaviv", "hadorom", "12")
@@ -40,43 +40,40 @@ class Test_Stores(Base):
         store.click_addNewStore()
         asrt = store.verify_By_text(store.assName)
         sleep(3)
-        results.validtion(asrt, "shula", "2")
+        results.validtion(asrt, "shula", "store2")
 
 #3
     def test_Add_store_incorrectly_when_all_fieldsNull(self):
         driver = self.driver
         store = StoresPage(driver)
         results = Utils(driver)
-        store.click_add_buttonn()
-        store.click_adding()
+        store.add_store()
         store.click_addNewStore()
         asrt = store.verify_by_innerText(store.assError)
-        results.validtion(asrt, "נא למלא שדה זה","3")
+        results.validtion(asrt, "נא למלא שדה זה","store3")
 
 #4
     def test_Add_store_incorrectly_when_insert_only_optional_fields(self):
         driver = self.driver
         store = StoresPage(driver)
         results = Utils(driver)
-        store.click_add_buttonn()
-        store.click_adding()
+        store.add_store()
         store.add_store_form_optionalFields("tredo", "hello", "0554356542", "tete@walla.com", "89")
         store.department(17)
         store.click_addNewStore()
         asrt = store.verify_by_innerText(store.assError)
-        results.validtion(asrt, "נא למלא שדה זה", "4")
+        results.validtion(asrt, "נא למלא שדה זה", "store4")
 
 #5
     def test_Add_store_incorrectly_when_insert_only_BnNumber(self):
         driver = self.driver
         store = StoresPage(driver)
         results = Utils(driver)
-        store.click_add_buttonn()
-        store.click_adding()
+        store.add_store()
         store.add_store_form_optionalFields("","","","","")
         store.click_addNewStore()
         asrt = store.verify_by_innerText(store.assError)
-        results.validtion(asrt, "נא למלא שדה זה", "5")
+        results.validtion(asrt, "נא למלא שדה זה")
 
 
 #6
@@ -84,8 +81,7 @@ class Test_Stores(Base):
         driver = self.driver
         store = StoresPage(driver)
         results = Utils(driver)
-        store.click_add_buttonn()
-        store.click_adding()
+        store.add_store()
         store.add_store_form_requiredFields("burgers","","","")
         store.click_addNewStore()
         asrt=store.verify_by_innerText(store.assErrorCity)
@@ -96,8 +92,7 @@ class Test_Stores(Base):
         driver = self.driver
         store = StoresPage(driver)
         results = Utils(driver)
-        store.click_add_buttonn()
-        store.click_adding()
+        store.add_store()
         store.add_store_form_optionalFields("","my website","","","")
         store.click_addNewStore()
         sleep(2)
@@ -111,8 +106,7 @@ class Test_Stores(Base):
         driver = self.driver
         store = StoresPage(driver)
         results = Utils(driver)
-        store.click_add_buttonn()
-        store.click_adding()
+        store.add_store()
         store.add_store_form_optionalFields("", "", "0567896574", "", "")
         store.click_addNewStore()
         asrt = store.verify_by_innerText(store.assError)
@@ -125,8 +119,7 @@ class Test_Stores(Base):
         driver = self.driver
         store = StoresPage(driver)
         results = Utils(driver)
-        store.click_add_buttonn()
-        store.click_adding()
+        store.add_store()
         store.add_store_form_optionalFields("", "", "", "yryr@walla.com", "")
         store.click_addNewStore()
         asrt = store.verify_by_innerText(store.assError)
@@ -137,8 +130,7 @@ class Test_Stores(Base):
         driver = self.driver
         store = StoresPage(driver)
         results = Utils(driver)
-        store.click_add_buttonn()
-        store.click_adding()
+        store.add_store()
         store.department(6)
         store.click_addNewStore()
         asrt = store.verify_by_innerText(store.assError)
@@ -149,8 +141,7 @@ class Test_Stores(Base):
         driver = self.driver
         store = StoresPage(driver)
         results = Utils(driver)
-        store.click_add_buttonn()
-        store.click_adding()
+        store.add_store()
         store.add_store_form_requiredFields("","ashdod","","")
         store.click_addNewStore()
         asrt = store.verify_by_innerText(store.assError)
@@ -161,8 +152,7 @@ class Test_Stores(Base):
         driver = self.driver
         store = StoresPage(driver)
         results = Utils(driver)
-        store.click_add_buttonn()
-        store.click_adding()
+        store.add_store()
         store.add_store_form_requiredFields("","","dor","")
         store.click_addNewStore()
         asrt = store.verify_by_innerText(store.assError)
@@ -173,8 +163,7 @@ class Test_Stores(Base):
         driver = self.driver
         store = StoresPage(driver)
         results = Utils(driver)
-        store.click_add_buttonn()
-        store.click_adding()
+        store.add_store()
         store.add_store_form_optionalFields("","","","","89")
         store.click_addNewStore()
         asrt = store.verify_by_innerText(store.assError)
@@ -185,17 +174,11 @@ class Test_Stores(Base):
         driver = self.driver
         store = StoresPage(driver)
         results = Utils(driver)
-        store.click_add_buttonn()
-        store.click_adding()
+        store.add_store()
         store.add_store_form_requiredFields("","","","678")
         store.click_addNewStore()
         asrt = store.verify_by_innerText(store.assError)
         results.validtion(asrt, "נא למלא שדה זה", "14")
-
-
-
-
-
 
 ###update store details
 
