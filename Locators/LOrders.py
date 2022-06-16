@@ -27,7 +27,7 @@ class OrdersElement:
     weight = "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[2]/div[5]/input[1]"
     wgt = "10000"
     enter_to_order_page = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/nav[1]/div[2]/a[5]/span[2]"
-    Missing_product = "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]"
+    Missing_product = "//body/div[@id='root']/div[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]"
     change_product = "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[2]"
     change_product_windows ="/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/h4[1]"
     # aseert
@@ -36,8 +36,7 @@ class OrdersElement:
     switch = "/html[1]/body[1]/div[1]/div[1]/div[2]/main[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/div[3]"
     order_ready = "//tbody/tr[1]/td[2]"
     order_num_search = "//tbody/tr/td[1]"
-    Dis_details = "//span[contains(text(),'מספר הזמנה: 487')]"
-
+    Dis_details = "//body/div[@id='root']/div[1]/div[4]/div[1]/h4[1]"
     new_status = "//div[contains(text(),'סטטוס הזמנה עודכן בהצלחה')]"
     pallets_status="//div[contains(text(),'סטטוס משטחים עודכן בהצלחה')]"
 
@@ -46,7 +45,7 @@ class OrdersElement:
     orders = "//h4[contains(text(),'הזמנות')]"
     orders_status = "/html[1]/body[1]/div[1]/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]"
     search_from_orders = "/html[1]/body[1]/div[1]/div[1]/div[2]/main[1]/div[2]/div[1]/div[2]/div[1]/div[1]/span[1]/span[1]/div[1]/input[1]"
-
+    up_table = "//thead//tr"
 
 
 

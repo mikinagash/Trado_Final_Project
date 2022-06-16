@@ -114,11 +114,6 @@ class OrdersPage(OrdersElement):
         value = self.driver.find_element(By.XPATH, self.logo).get_attribute("src")
         return value
 
-    # def select_index(self, num):
-    #     self.driver.find_element(By.XPATH, self.change_quantity).click()
-    #     roles = self.driver.find_elements(By.XPATH,OrdersElement.quantity)
-    #     roles[num].click()
-
     def assert_change_pallets(self):
         name = self.driver.find_element(By.XPATH, OrdersElement.pallets_status).text
         assert name == "סטטוס משטחים עודכן בהצלחה"
