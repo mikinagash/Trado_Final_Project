@@ -1,11 +1,10 @@
-import pytest
-from selenium.webdriver.common.by import By
+
 from Base.base import Base
 from Pages.PStores import StoresPage
 from Utils.Utils import Utils
 import pytest
 from time import sleep
-from Tests.Server.Data_Base.Mongo_DB import MongoDB
+#from Tests.Server.Data_Base.Mongo_DB import MongoDB
 
 
 
@@ -224,7 +223,7 @@ class Test_Stores(Base):
         results.validtion(asrt,"0654563423","store17")
         sleep(2)
         results.validtion(asrt1, "netz@walla.com", "store17B")
-        data= MongoDB()
+
 
 
 #18

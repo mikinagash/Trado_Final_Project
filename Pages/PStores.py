@@ -2,11 +2,7 @@ from Locators.LStores import LocatorsStores
 from selenium.webdriver.common.by import By
 from time import sleep
 from random import *
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.select import Select
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+
 
 class StoresPage(LocatorsStores):
 
@@ -27,6 +23,8 @@ class StoresPage(LocatorsStores):
         self.nameField=LocatorsStores.nameField
         self.websiteField=LocatorsStores.websiteField
         self.descriptionField=LocatorsStores.descriptionField
+        self.logoField=LocatorsStores.logoField
+        self.logoPath=LocatorsStores.logoPath
         self.telephoneField=LocatorsStores.telephoneField
         self.emailField=LocatorsStores.emailField
         self.departmentField=LocatorsStores.departmentField
@@ -37,64 +35,101 @@ class StoresPage(LocatorsStores):
         self.addStoreButton=LocatorsStores.addStoreButton
         ##search
         self.searchStorefield=LocatorsStores.searchStorefield
+        ##update
+        self.storeName=LocatorsStores.storeName
+        self.updateButton=LocatorsStores.updateButton
+        ##assert
+        self.assName=LocatorsStores.assName
+        self.assAddress=LocatorsStores.assAddress
+        self.assEmail=LocatorsStores.assEmail
+        self.assBnNum=LocatorsStores.assBnNum
+        self.assPhone=LocatorsStores.assPhone
+        self.assError=LocatorsStores.assError
+        self.assErrorCity=LocatorsStores.assErrorCity
+        self.assErrorEmail=LocatorsStores.assErrorEmail
+        self.assErrorPhone=LocatorsStores.assErrorPhone
+        self.assNoResults=LocatorsStores.assNoResults
 
-
-    def click_add_buttonn(self):
+    def add_store(self):
         self.driver.find_element(By.XPATH, self.addButton).click()
-
-    def click_adding(self):
         self.driver.find_element(By.XPATH, self.adding).click()
 
-    def enter_bnNumber(self):
-        self.bnNum= randint(100,10000000000)
+
+    # def click_add_buttonn(self):
+    #     self.driver.find_element(By.XPATH, self.addButton).click()
+    #
+    # def click_adding(self):
+    #     self.driver.find_element(By.XPATH, self.adding).click()
+
+    def add_store_form_optionalFields(self,url,des,phoneNum,email,apt):
+        self.bnNum = randint(100, 10000000000)
         self.driver.find_element(By.XPATH, self.bnNumField).send_keys(self.bnNum)
-
-    #required field
-    def enter_storeName(self,name):
-        self.driver.find_element(By.XPATH, self.nameField).send_keys(name)
-
-    def enter_websiteUrl(self,url):
         self.driver.find_element(By.XPATH, self.websiteField).send_keys(url)
-
-    def enter_description(self,des):
         self.driver.find_element(By.XPATH, self.descriptionField).send_keys(des)
-
-    def enter_storePhone(self,phoneNum):
         self.driver.find_element(By.XPATH, self.telephoneField).send_keys(phoneNum)
-
-    def enter_storeEmail(self,email):
         self.driver.find_element(By.XPATH, self.emailField).send_keys(email)
+        self.driver.find_element(By.XPATH, self.apartmentField).send_keys(apt)
 
-    def enter_storeDepartment(self,depart):
-        self.driver.find_element(By.XPATH, self.departmentField).send_keys(depart)
-        # # self.driver.find_element(By.XPATH,self.departmentField).click()
-        # select = Select(self.driver.find_element(By.XPATH, self.departmentField))
-        # select.select_by_visible_text(depart)
+    def department(self, num):
+        self.driver.find_element(By.XPATH, self.departmentField).click()
+        depart = self.driver.find_elements(By.XPATH, self.selectDepart)
+        depart[num].click()
 
 
-    # required field
-    def enter_storeCity(self,city):
+    def add_store_form_requiredFields(self,name,city,street,buildNum):
+        self.driver.find_element(By.XPATH, self.nameField).send_keys(name)
         self.driver.find_element(By.XPATH, self.cityField).send_keys(city)
-
-    # required field
-    def enter_storeStreet(self,street):
         self.driver.find_element(By.XPATH, self.streetField).send_keys(street)
-
-    # required field
-    def enter_storeBuilding(self,buildNum):
         self.driver.find_element(By.XPATH, self.buildingField).send_keys(buildNum)
 
-    def enter_storeApartment(self,apt):
-        self.driver.find_element(By.XPATH, self.apartmentField).send_keys(apt)
+    def clear_required_fields(self):
+        self.driver.find_element(By.XPATH, self.nameField).clear()
+        self.driver.find_element(By.XPATH, self.cityField).clear()
+        self.driver.find_element(By.XPATH, self.streetField).clear()
+        self.driver.find_element(By.XPATH, self.buildingField).clear()
+
+    def clear_optional_fields(self):
+        self.driver.find_element(By.XPATH, self.bnNumField).clear()
+        self.driver.find_element(By.XPATH, self.websiteField).clear()
+        self.driver.find_element(By.XPATH, self.descriptionField).clear()
+        self.driver.find_element(By.XPATH, self.telephoneField).clear()
+        self.driver.find_element(By.XPATH, self.emailField).clear()
+        self.driver.find_element(By.XPATH, self.departmentField).clear()
+        self.driver.find_element(By.XPATH, self.apartmentField).clear()
+
 
     def click_addNewStore(self):
         self.driver.find_element(By.XPATH, self.addStoreButton).click()
-
 
 ##search stores functions
 
     def search_store(self,details):
         self.driver.find_element(By.XPATH,self.searchStorefield).send_keys(details)
+
+##update store deatils
+
+    def click_on_store_name(self):
+        self.driver.find_element(By.CSS_SELECTOR,self.storeName).click()
+
+    def click_update(self):
+        self.driver.find_element(By.XPATH,self.updateButton).click()
+
+    ##assert functions
+
+    def verify_By_text(self,elmnt):
+        x = self.driver.find_element(By.CSS_SELECTOR, elmnt).text
+        return x
+
+
+    def verify_by_innerText(self,elmnt):
+        x = self.driver.find_element(By.XPATH, elmnt).get_attribute("innerText")
+        return x
+
+    def verify_NoResults(self):
+        x= self.driver.find_element(By.XPATH,self.assNoResults).text
+        return x
+
+
 
 
 
