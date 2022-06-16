@@ -103,7 +103,7 @@ class SystemPage:
         self.driver.find_element(By.XPATH, self.stores_user_editing).click()
         self.driver.find_element(By.XPATH, self.stores_user_editing).clear()
         self.driver.find_element(By.XPATH, self.stores_user_editing).send_keys(store)
-        # self.driver.find_element(By.XPATH, self.phone_user_editing).click()
+        self.driver.find_element(By.XPATH, "//form[1]/div[1]/div[3]/label[1]").click()
 
 
 
@@ -138,15 +138,15 @@ class SystemPage:
 
     def error_message_email_invalid(self):
         # self.driver.find_element(By.XPATH, "//body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[3]/label[1]").click()
-        error_message_email_invalid1 = self.driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[3]/div[1]").text
-        assert error_message_email_invalid1 == 'דוא"ל לא תקין'
+        error_message_email_invalid1 = self.driver.find_element(By.XPATH, "//form[1]/div[1]/div[3]/div[1]").text
+        assert error_message_email_invalid1 == 'דוא״ל לא תקין'
 
     def error_message_phone_(self):
         error_message_phone_ = self.driver.find_element(By.XPATH, "//form[1]/div[1]/div[4]/div[1]").text
         assert error_message_phone_ == 'מס׳ טלפון לא תקין'
 
     def error_message_stores_(self):
-        self.driver.find_element(By.XPATH, "//form[1]/div[1]/div[7]/label[1]").click()
+        self.driver.find_element(By.XPATH, "//form[1]/div[1]/div[7]/div[1]").click()
         error_message_phone_ = self.driver.find_element(By.XPATH, "//form[1]/div[1]/div[7]/div[1]").text
         assert error_message_phone_ == 'נא למלא שדה זה'
 
