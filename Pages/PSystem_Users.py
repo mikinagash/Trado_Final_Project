@@ -29,6 +29,8 @@ class SystemPage:
         self.authorization_user_editing = EL.editing_authorization_user
         self.stores_user_editing = EL.editing_stores_user
         self.clickBTN_editing = EL.btn_editing
+        self.click_add_button = EL.click_Add_button
+        self.click_add_ = EL.click_add
 
         # self.role_user_editing = EL.ad
 
@@ -54,8 +56,8 @@ class SystemPage:
     def click_serch_file(self):
         self.driver.find_element(By.XPATH, self.serch_file).click()
 
-    def user_search(self, details):
-        self.driver.find_element(By.XPATH, self.serch_file).send_keys(details)
+    def user_search(self, detail):
+        self.driver.find_element(By.XPATH, self.serch_file).send_keys(detail)
 
 
     # editing system user
@@ -101,12 +103,16 @@ class SystemPage:
         self.driver.find_element(By.XPATH, self.stores_user_editing).click()
         self.driver.find_element(By.XPATH, self.stores_user_editing).clear()
         self.driver.find_element(By.XPATH, self.stores_user_editing).send_keys(store)
+        # self.driver.find_element(By.XPATH, self.phone_user_editing).click()
+
+
 
 
     def editing_Btn_click(self):
         self.driver.find_element(By.XPATH, self.clickBTN_editing).click()
 
     def editing_error_messege_firstname(self):
+        # self.driver.find_element(By.XPATH, self.clickBTN_editing).click()
         return self.driver.find_element(By.XPATH, self.firstname_user_editing).get_attribute('validationMessage')
 
     def editing_error_messege_lastname(self):
@@ -131,7 +137,7 @@ class SystemPage:
         assert error_message_email == 'נא למלא שדה זה'
 
     def error_message_email_invalid(self):
-        self.driver.find_element(By.XPATH, "//body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[3]/label[1]").click()
+        # self.driver.find_element(By.XPATH, "//body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[3]/label[1]").click()
         error_message_email_invalid1 = self.driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/form[1]/div[1]/div[3]/div[1]").text
         assert error_message_email_invalid1 == 'דוא"ל לא תקין'
 
@@ -140,6 +146,7 @@ class SystemPage:
         assert error_message_phone_ == 'מס׳ טלפון לא תקין'
 
     def error_message_stores_(self):
+        self.driver.find_element(By.XPATH, "//form[1]/div[1]/div[7]/label[1]").click()
         error_message_phone_ = self.driver.find_element(By.XPATH, "//form[1]/div[1]/div[7]/div[1]").text
         assert error_message_phone_ == 'נא למלא שדה זה'
 
@@ -148,6 +155,18 @@ class SystemPage:
     # def choose_role(self, num):
     #     roles = self.driver.find_elements(By.XPATH, EL.roles)
     #     roles[num].click()
+
+#############
+    def click_add_but(self):
+        self.driver.find_element(By.XPATH, EL.click_Add_button).click()
+        sleep(1)
+        self.driver.find_element(By.XPATH, EL.click_add_user_).click()
+
+
+    def click_add(self):
+        self.driver.find_element(By.XPATH, EL.click_add).click()
+
+
 
 
 
