@@ -154,4 +154,16 @@ class Test_Reports(Base):
         driver = self.driver
         reports = Report_Page(driver)
         reports.open_system_page()
-        value = reports.serch_system()
+        value = reports.serch_field()
+        assert value[0] == "40" and value[1] == "188"
+
+    def test_users_information_table(self):
+        driver = self.driver
+        reports = Report_Page(driver)
+        reports.open_system_page()
+        value = reports.information_table()
+        print(len(value))
+        print(type(value))
+        print(value)
+
+
