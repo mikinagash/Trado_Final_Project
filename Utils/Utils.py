@@ -4,7 +4,7 @@ from selenium import webdriver
 
 
 class Utils():
-    def __init__(self,driver):
+    def __init__(self,driver,pic):
         self.driver = driver
 
     def validtion(self,expected, actual):
@@ -12,7 +12,7 @@ class Utils():
         try:
             assert expected == actual
         except Exception:
-            allure.attach(driver.get_screenshot_as_png(), driver.save_screenshot("screemshot"),
+            allure.attach(driver.get_screenshot_as_png(), driver.save_screenshot("pic"),
                           attachment_type=allure.attachment_type.PNG)
 
 
