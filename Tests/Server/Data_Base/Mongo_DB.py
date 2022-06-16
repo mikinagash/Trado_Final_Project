@@ -11,3 +11,4 @@ class MongoDB:
 
 
 MongoDB("trado_qa","orders").find()
+MongoDB("trado_qa","stores").find()
