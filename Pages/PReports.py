@@ -204,3 +204,8 @@ class Report_Page(Reports):
         value = self.driver.find_element(By.XPATH, self.details_table).get_attribute("innerText")
         return value
 
+
+
+
+
+
