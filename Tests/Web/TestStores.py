@@ -18,8 +18,7 @@ class Test_Stores(Base):
         driver=self.driver
         store= StoresPage(driver)
         results= Utils(driver)
-        store.click_add_buttonn()
-        store.click_adding()
+        store.add_store()
         store.add_store_form_requiredFields("BB5","tel-aviv","hadar","12")
         store.click_addNewStore()
         asrt = store.verify_By_text(store.assName)
