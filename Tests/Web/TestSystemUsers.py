@@ -270,7 +270,7 @@ class Test_Editing_system_user(Base):
         system.error_message_stores_()
         sleep(2)
         system.editing_Btn_click()
-        assert system.editing_error_messege_firstname() == 'זהו שדה חובה.'
+        assert system.editing_error_messege_firstname() == EL.error_message_pops_up
 
     def test_invalid_Update_required_fields_is_null(self):
         driver = self.driver
@@ -293,7 +293,7 @@ class Test_Editing_system_user(Base):
         sleep(8)
         system.editing_Btn_click()
         sleep(6)
-        assert system.editing_error_messege_firstname() == 'זהו שדה חובה.'
+        assert system.editing_error_messege_firstname() == EL.error_message_pops_up
 
     def test_invalid_Update_firstname_is_null(self):
         driver = self.driver
@@ -312,7 +312,7 @@ class Test_Editing_system_user(Base):
         system.error_message_firstname()
         sleep(1)
         system.editing_Btn_click()
-        assert system.editing_error_messege_firstname() == 'זהו שדה חובה.'
+        assert system.editing_error_messege_firstname() == EL.error_message_pops_up
 
     def test_invalid_Update_lastname_is_null(self):
         driver = self.driver
@@ -331,7 +331,7 @@ class Test_Editing_system_user(Base):
         system.error_message_lastname()
         sleep(1)
         system.editing_Btn_click()
-        assert system.editing_error_messege_lastname() == 'זהו שדה חובה.'
+        assert system.editing_error_messege_lastname() == EL.error_message_pops_up
 
     def test_invalid_Update_email_is_null(self):
         driver = self.driver
@@ -350,7 +350,7 @@ class Test_Editing_system_user(Base):
         system.error_message_email()
         system.editing_Btn_click()
         sleep(1)
-        assert system.editing_error_messege_email() == 'זהו שדה חובה.'
+        assert system.editing_error_messege_email() == EL.error_message_pops_up
 
     def test_invalid_Update_email_is_invalid(self):
         driver = self.driver
@@ -423,7 +423,7 @@ class Test_Editing_system_user(Base):
         system.error_message_stores_()
         system.editing_Btn_click()
         sleep(1)
-        assert system.editing_error_messege_stores() == 'זהו שדה חובה.'
+        assert system.editing_error_messege_stores() == EL.error_message_pops_up
 
 
 class Test_add_a_user(Base):
@@ -457,7 +457,130 @@ class Test_add_a_user(Base):
         system.editing_email('salmon@gmai.com')
         system.editing_stores('salmon')
         sleep(6)
+        system.error_message_firstname()
+        system.error_message_lastname()
+        system.error_message_email()
+        system.error_message_stores_()
         system.click_add()
         add_user = self.driver.find_element(By.XPATH, EL.lin_add_user).text
         assert add_user == 'xfad'
         sleep(9)
+
+
+    def test_invalid_add_user_all_fielde_is_null(self):
+        driver = self.driver
+        system = SystemPage(driver)
+        system.Entrance()
+        system.click_add_but()
+        system.editing_firstname('')
+        system.editing_lastname('')
+        system.editing_email('')
+        system.editing_phone('')
+        system.editing_role(2)
+        system.editing_authorization(0)
+        system.editing_stores('')
+        system.error_message_firstname()
+        system.error_message_lastname()
+        system.error_message_email()
+        system.error_message_phone_()
+        system.error_message_stores_()
+        sleep(6)
+        system.click_add()
+        assert system.editing_error_messege_firstname() == EL.error_message_pops_up
+        sleep(9)
+
+    def test_invalid_add_user_firstname_fielde_is_null(self):
+        driver = self.driver
+        system = SystemPage(driver)
+        system.Entrance()
+        system.click_add_but()
+        system.editing_firstname('')
+        system.editing_lastname('afadfas')
+        system.editing_email('sdfaasd@adfadf.vs')
+        system.editing_phone('9876543212')
+        system.editing_role(2)
+        system.editing_authorization(0)
+        system.editing_stores('wdas')
+        system.error_message_firstname()
+        sleep(6)
+        system.click_add()
+        assert system.editing_error_messege_firstname() == EL.error_message_pops_up
+        sleep(9)
+
+
+    def test_invalid_add_user_lastname_fielde_is_null(self):
+        driver = self.driver
+        system = SystemPage(driver)
+        system.Entrance()
+        system.click_add_but()
+        system.editing_firstname('gvgvggv')
+        system.editing_lastname('')
+        system.editing_email('sdfaasd@adfadf.vs')
+        system.editing_phone('9876543212')
+        system.editing_role(2)
+        system.editing_authorization(0)
+        system.editing_stores('wdas')
+        system.error_message_lastname()
+        sleep(6)
+        system.click_add()
+        assert system.editing_error_messege_lastname() == EL.error_message_pops_up
+        sleep(9)
+
+
+    def test_invalid_add_user_email_fielde_is_null(self):
+        driver = self.driver
+        system = SystemPage(driver)
+        system.Entrance()
+        system.click_add_but()
+        system.editing_firstname('asdfdsfdas')
+        system.editing_lastname('afadfas')
+        system.editing_email('')
+        system.editing_phone('9876543212')
+        system.editing_role(2)
+        system.editing_authorization(0)
+        system.editing_stores('wdas')
+        system.error_message_email()
+        sleep(6)
+        system.click_add()
+        assert system.editing_error_messege_email() == EL.error_message_pops_up
+        sleep(9)
+
+
+    def test_invalid_add_user_email_fielde_is_invalid(self):
+        driver = self.driver
+        system = SystemPage(driver)
+        system.Entrance()
+        system.click_add_but()
+        system.editing_firstname('asdasdas')
+        system.editing_lastname('afadfas')
+        system.editing_email('sd')
+        system.editing_phone('9876543212')
+        system.editing_role(2)
+        system.editing_authorization(0)
+        system.editing_stores('wdas')
+        sleep(5)
+        system.error_message_email_invalid()
+        sleep(1)
+        system.click_add()
+        assert system.editing_error_messege_email() == "אני רוצה לכלול '@' בכתובת האימייל. ב-'sd' חסר '@'."
+        sleep(9)
+
+
+    def test_invalid_add_user_stores_fielde_is_null(self):
+        driver = self.driver
+        system = SystemPage(driver)
+        system.Entrance()
+        system.click_add_but()
+        system.editing_firstname('adfsdafsa')
+        system.editing_lastname('afadfas')
+        system.editing_email('sdfaasd@adfadf.vs')
+        system.editing_phone('9876543212')
+        system.editing_role(2)
+        system.editing_authorization(0)
+        system.editing_stores('')
+        system.error_message_stores_()
+        sleep(6)
+        system.click_add()
+        assert system.editing_error_messege_stores() == EL.error_message_pops_up
+        sleep(9)
+

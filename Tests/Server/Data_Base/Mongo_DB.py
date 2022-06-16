@@ -10,5 +10,4 @@ class MongoDB:
             print(i)
 
 
-
 MongoDB("trado_qa","orders").find()

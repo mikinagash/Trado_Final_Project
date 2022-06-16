@@ -1,9 +1,7 @@
 from Base.base import Base
-
-from Locators.LOrders2 import OrdersElement
 from Utils.Utils import Utils
 from time import sleep
-from Pages.POrders2 import OrdersPage
+from Pages.POrders import OrdersPage
 import pytest
 @pytest.mark.usefixtures('set_up')
 class TestOrders(Base):
@@ -24,32 +22,13 @@ class TestOrders(Base):
         search = OrdersPage(driver)
         search.enter_order("עד")
 
-
-    def test_search_order_incorrect_with_special_characters(self):
-        driver = self.driver
-        a = Utils(driver)
-        search = OrdersPage(driver)
-        search.enter_order("!#$%&")
-
-
-
     def test_search_order_incorrect_by_first_name(self):
         driver = self.driver
         a = Utils(driver)
         search = OrdersPage(driver)
         search.enter_order("גגג")
-        a.validtion("ddd","מציג \n לעמוד\nאין תוצאות\nסה״כ: 0 שורות")
-
-
-
-
-    def test_downloud_order_file(self):
-        driver = self.driver
-        a = Utils(driver)
-        file = OrdersPage(driver)
-        file.export_files_received_order()
-
-
+        a.validtion("גגג",OrdersPage.Error_msg,"pic")
+        print(OrdersPage.Error_msg)
 
 
     def test_search_order_correct_by_last_name(self):
@@ -57,7 +36,7 @@ class TestOrders(Base):
         a = Utils(driver)
         search = OrdersPage(driver)
         search.enter_order("גרובר")
-        sleep(3)
+
 
 
 
@@ -76,10 +55,9 @@ class TestOrders(Base):
         order.select_order()
 
 
-    def test_verify_user_can_export_of_rady_order(self):
-        driver = self.driver
-        downloud = OrdersPage(driver)
-        downloud.export_files_Redy_order()
+
+
+
 
 
 

@@ -12,7 +12,7 @@ class Utils():
         try:
             assert expected == actual
         except Exception:
-            allure.attach(driver.get_screenshot_as_png(), driver.save_screenshot("pic"),
+            allure.attach(driver.get_screenshot_as_png(), driver.save_screenshot(pic),
                           attachment_type=allure.attachment_type.PNG)
 
 
