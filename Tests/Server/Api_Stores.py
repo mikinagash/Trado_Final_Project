@@ -38,7 +38,6 @@ class Test_storeSearch:
                 response = res.json()
                 assert res.elapsed.total_seconds() < 60
                 assert res.status_code == 200
-                # print(response['payload']['data'][0]['address'])
                 assert (response['status'])== 200
                 assert (response['payload']['count'])== 1
 

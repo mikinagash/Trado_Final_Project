@@ -9,25 +9,6 @@ from Utils.Utils import Utils
 @pytest.mark.usefixtures('set_up')
 class Test_Reports(Base):
 
-    # left to right clicks
-    # def test_left_right(self):
-    #     driver = self.driver
-    #     reports = Report_Page(driver)
-    #     reports.open_reports_page()
-    #     reports.datesbutton()
-    #     reports.left_button_click()
-    #     reports.right_button_click()
-    #     reports.enterReports()
-    #     reports.dates_button()
-    #     sleep(1)
-    #     value1 = reports.dates_right_selected()
-    #     sleep(1)
-    #     value2 = reports.dates_left_selected()
-    #     print(value1)
-    #     print(value2)
-
-
-
     # move between dates and verify the selected dates are displayed
     def test_something(self):
         driver = self.driver
@@ -36,13 +17,14 @@ class Test_Reports(Base):
         reports.datesButton()
         # save dates in different lists
         value = reports.dates_static()
-        # compare dates from diffrent list
+        # compare dates from diffrent lists
         assert value[0][0][:4] == "היום" \
                and value[0][1][:5] == "אתמול" \
-               and value[0][2][-8:-3] == value[1][2][:5] \
+               and value[0][2][-8:-3] == value[1][2][:5] or value[0][2][:-10] == value[2][2][:5] \
                and value[0][3][-8:-3] == value[1][3][:5] \
                and value[0][4][-8:-3] == value[1][4][:5] \
                and value[0][5][-8:-3] == value[1][5][:5]
+        print(value)
 
 
     def test_sel_quick(self):
@@ -62,7 +44,7 @@ class Test_Reports(Base):
         reports = Report_Page(driver)
         reports.open_reports_page()
         img = reports.trado_logo()
-        assert img == "https://storage.cloud.google.com/trado_images/settings/value-2rnvbaw5joki7qm8ud?1607509995191"
+        assert img == reports.imglink
 
 
     # verify  button text and size
@@ -125,45 +107,45 @@ class Test_Reports(Base):
 # ui sa ui  ui   ui   ui  ui
 
 
-    # verify logo img
-    def test_u1_pic(self):
-        driver = self.driver
-        reports = Report_Page(driver)
-        reports.open_system_page()
-        sleep(2)
-        img = reports.trado_logo_1()
-        assert img == "https://storage.cloud.google.com/trado_images/settings/value-2rnvbaw5joki7qm8ud?1607509995191"
-
-    # verify  button text and size
-    def test_u2_logo(self):
-        driver = self.driver
-        reports = Report_Page(driver)
-        reports.open_system_page()
-        value = reports.reports_h4_logo_system()
-        assert value[0] == "משתמשי מערכת" and value[1] == "26" and value[2] == "124"
-
-    # #  verify button size
-    def test_u3_barsicon(self):
-        driver = self.driver
-        reports = Report_Page(driver)
-        reports.open_system_page()
-        value = reports.bars_icon_system()
-        assert value[0] == "15" and value[1] == "15"
-
-    def test_u3_serchfield_system(self):
-        driver = self.driver
-        reports = Report_Page(driver)
-        reports.open_system_page()
-        value = reports.serch_field()
-        assert value[0] == "40" and value[1] == "188"
-
-    def test_users_information_table(self):
-        driver = self.driver
-        reports = Report_Page(driver)
-        reports.open_system_page()
-        value = reports.information_table()
-        print(len(value))
-        print(type(value))
-        print(value)
+    # # verify logo img
+    # def test_u1_pic(self):
+    #     driver = self.driver
+    #     reports = Report_Page(driver)
+    #     reports.open_system_page()
+    #     sleep(2)
+    #     img = reports.trado_logo_1()
+    #     assert img == "https://storage.cloud.google.com/trado_images/settings/value-2rnvbaw5joki7qm8ud?1607509995191"
+    #
+    # # verify  button text and size
+    # def test_u2_logo(self):
+    #     driver = self.driver
+    #     reports = Report_Page(driver)
+    #     reports.open_system_page()
+    #     value = reports.reports_h4_logo_system()
+    #     assert value[0] == "משתמשי מערכת" and value[1] == "26" and value[2] == "124"
+    #
+    # # #  verify button size
+    # def test_u3_barsicon(self):
+    #     driver = self.driver
+    #     reports = Report_Page(driver)
+    #     reports.open_system_page()
+    #     value = reports.bars_icon_system()
+    #     assert value[0] == "15" and value[1] == "15"
+    #
+    # def test_u3_serchfield_system(self):
+    #     driver = self.driver
+    #     reports = Report_Page(driver)
+    #     reports.open_system_page()
+    #     value = reports.serch_field()
+    #     assert value[0] == "40" and value[1] == "188"
+    #
+    # def test_users_information_table(self):
+    #     driver = self.driver
+    #     reports = Report_Page(driver)
+    #     reports.open_system_page()
+    #     value = reports.information_table()
+    #     print(len(value))
+    #     print(type(value))
+    #     print(value)
 
 
