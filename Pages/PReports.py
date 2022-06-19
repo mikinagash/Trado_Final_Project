@@ -120,6 +120,7 @@ class Report_Page(Reports):
     def selectyear(self):
         select = Select(self.driver.find_element_by_xpath(self.righhtscroldown))
         select.select_by_index(1)
+        select.select_by_index(0)
 
 
     # 12 options,the current month is the limit for month selection

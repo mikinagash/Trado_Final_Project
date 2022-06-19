@@ -23,6 +23,7 @@ class Reports:
     tradologo = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[1]/div[1]/a[1]/img[1]"
     reportsh4logo = "//h4[contains(text(),'Reports')]"
     barsicon = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[1]/div[1]/span[1]/span[1]/i[1]"
+    imglink ="https://storage.cloud.google.com/trado_images/settings/value-2rnvbaw5joki7qm8ud?1607509995191"
 
     # buttons left and right on the calendar
     datesLeftButton = "//body[1]/div[1]/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/button[1]/i[1]"
