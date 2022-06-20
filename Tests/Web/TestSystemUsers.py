@@ -161,17 +161,19 @@ class Test_Editing_system_user(Base):
         system.Entrance()
         # system.Btn_serch()
         # system.click_editing_system_user()
+        sleep(3)
         system.enter_id_user(EL.id_user)
+        sleep(3)
         system.editing_firstname('salmon')
+        sleep(3)
         system.editing_stores('a')
         system.editing_Btn_click()
         sleep(3)
-        # new_edition_user_by_name = driver.find_element(By.XPATH, EL.click_details).text
-        # assert new_edition_user_by_name == 'salmon'
-        sleep(6)
+        new_edition_user_by_name = driver.find_element(By.XPATH, EL.firstName_details).text
+        assert new_edition_user_by_name == 'salmon'
         # a = MongoDB('trado_qa', 'adminusers').find_one1('firstName')
         # assert a == 'salmon'
-        assert Queries.find_one('firstName','salmon')
+        # assert Queries.find_one('adminUser','firstName') == 'salmon'
 
     def test_valid_update_lastname(self):
         driver = self.driver
