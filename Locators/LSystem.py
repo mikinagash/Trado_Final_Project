@@ -7,6 +7,9 @@ class SystemElement:
     # element search users
     system_users_path = "//body[1]/div[1]/div[1]/div[2]/div[1]/nav[1]/div[2]/a[24]/span[2]"
 
+    id_user = "4jp555dl4b2tieg"
+    click_detail_user = '//tbody/tr/td[3]'
+
     phoneField = "//span[1]/div[1]/input[1]"
 
     phone = "1950000000"
@@ -62,7 +65,7 @@ class SystemElement:
 
     # element editing system user
 
-    click_details = "//tbody/tr[12]/td[1]"
+    click_details = "//tbody/tr[13]/td[1]"
 
     editing_firstname_user = "(//input[@placeholder='שם פרטי'])[1]"
     new_firstname = "סלמוןט"

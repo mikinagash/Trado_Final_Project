@@ -1,3 +1,4 @@
+from Tests.Server.Data_Base.Mongo_DB import MongoDB
 from time import sleep
 from selenium.webdriver.common.by import By
 from Pages.PSystem_Users import SystemPage
@@ -122,9 +123,8 @@ class Test_Editing_system_user(Base):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        # system.Btn_serch()
-        system.click_editing_system_user()
-        system.editing_firstname('salmon')
+        system.enter_id_user(EL.id_user)
+        system.editing_firstname('eli')
         system.editing_lastname('סלמון')
         system.editing_email('tasama@gmail.com')
         system.editing_phone('9513247812')
@@ -133,15 +133,17 @@ class Test_Editing_system_user(Base):
         system.editing_stores('tasama')
         system.editing_Btn_click()
         sleep(6)
-        new_edition_user_by_name = driver.find_element(By.XPATH, EL.click_details).text
-        assert new_edition_user_by_name == 'salmon'
+        # new_edition_user_by_name = driver.find_element(By.XPATH, EL.click_details).text
+        # assert new_edition_user_by_name == 'salmon'
+        assert MongoDB.find()
 
     def test_valid_update_With_required_fields(self):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
         # system.Btn_serch()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_firstname('סלמוןט')
         system.editing_lastname('טסמהט')
         system.editing_email('salmon@gmail.com')
@@ -152,26 +154,31 @@ class Test_Editing_system_user(Base):
         assert new_edition_user_by_name == 'סלמוןט'
         sleep(6)
 
+
     def test_valid_update_name(self):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
         # system.Btn_serch()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_firstname('salmon')
         system.editing_stores('a')
         system.editing_Btn_click()
         sleep(3)
-        new_edition_user_by_name = driver.find_element(By.XPATH, EL.click_details).text
-        assert new_edition_user_by_name == 'salmon'
+        # new_edition_user_by_name = driver.find_element(By.XPATH, EL.click_details).text
+        # assert new_edition_user_by_name == 'salmon'
         sleep(6)
+        a = MongoDB.find_one1(['firstName'])
+        print(a)
 
     def test_valid_update_lastname(self):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
         # system.Btn_serch()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_lastname('tasama')
         system.editing_stores('a')
         system.editing_Btn_click()
@@ -185,7 +192,8 @@ class Test_Editing_system_user(Base):
         system = SystemPage(driver)
         system.Entrance()
         # system.Btn_serch()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_email('salon@gmail.com')
         system.editing_stores('a')
         system.editing_Btn_click()
@@ -199,7 +207,8 @@ class Test_Editing_system_user(Base):
         system = SystemPage(driver)
         system.Entrance()
         # system.Btn_serch()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_phone('1234567894')
         system.editing_stores('a')
         system.editing_Btn_click()
@@ -213,7 +222,8 @@ class Test_Editing_system_user(Base):
         system = SystemPage(driver)
         system.Entrance()
         # system.Btn_serch()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_role(3)
         system.editing_stores('a')
         system.editing_Btn_click()
@@ -227,7 +237,8 @@ class Test_Editing_system_user(Base):
         system = SystemPage(driver)
         system.Entrance()
         # system.Btn_serch()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_authorization(1)
         system.editing_stores('a')
         system.editing_Btn_click()
@@ -240,7 +251,8 @@ class Test_Editing_system_user(Base):
         system = SystemPage(driver)
         system.Entrance()
         # system.Btn_serch()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_stores('salmon')
         system.editing_Btn_click()
         sleep(6)
@@ -253,7 +265,8 @@ class Test_Editing_system_user(Base):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_firstname('')
         system.editing_lastname('')
         system.editing_email('')
@@ -276,7 +289,8 @@ class Test_Editing_system_user(Base):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_firstname('')
         system.editing_lastname('')
         system.editing_email('')
@@ -299,7 +313,8 @@ class Test_Editing_system_user(Base):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_firstname('')
         system.editing_lastname('dsfg')
         system.editing_email('salmon@sad.com')
@@ -318,7 +333,8 @@ class Test_Editing_system_user(Base):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_firstname('xfad')
         system.editing_lastname('')
         system.editing_email('salmon@sad.com')
@@ -337,7 +353,8 @@ class Test_Editing_system_user(Base):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_firstname('xfad')
         system.editing_lastname('safas')
         system.editing_email('')
@@ -356,7 +373,8 @@ class Test_Editing_system_user(Base):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_firstname('xfad')
         system.editing_lastname('safas')
         system.editing_email('sfaadsc')
@@ -379,7 +397,8 @@ class Test_Editing_system_user(Base):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_firstname('xfad')
         system.editing_lastname('safas')
         system.editing_email('salmon@gmai.com')
@@ -395,7 +414,8 @@ class Test_Editing_system_user(Base):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_firstname('xfad')
         system.editing_lastname('safas')
         system.editing_email('salmon@gmai.com')
@@ -410,7 +430,8 @@ class Test_Editing_system_user(Base):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        system.click_editing_system_user()
+        # system.click_editing_system_user()
+        system.enter_id_user(EL.id_user)
         system.editing_firstname('salm')
         system.editing_lastname('tas')
         system.editing_email('sfaadsc@gamil.com')
@@ -433,17 +454,17 @@ class Test_add_a_user(Base):
         system = SystemPage(driver)
         system.Entrance()
         system.click_add_but()
-        system.editing_firstname('salmontasama')
-        system.editing_lastname('safas')
-        system.editing_email('salmon@gmai.com')
-        system.editing_phone('1235678934')
+        system.editing_firstname('salmontasama231')
+        system.editing_lastname('safas12')
+        system.editing_email('salmont@gmai.com')
+        system.editing_phone('1235678939')
         system.editing_role(2)
         system.editing_authorization(0)
         system.editing_stores('salmon')
         sleep(6)
-        # system.click_add()
+        system.click_add()
         add_user = self.driver.find_element(By.XPATH, EL.lin_add_user).text
-        assert add_user == 'salmontasama'
+        assert add_user == 'salmontasama231'
         sleep(9)
 
 

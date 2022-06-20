@@ -31,6 +31,8 @@ class SystemPage:
         self.clickBTN_editing = EL.btn_editing
         self.click_add_button = EL.click_Add_button
         self.click_add_ = EL.click_add
+        self.click_user_detail = EL.click_detail_user
+
 
         # self.role_user_editing = EL.ad
 
@@ -65,6 +67,15 @@ class SystemPage:
     #     self.driver.find_element(By.XPATH, file).clear()
 
 
+    def enter_id_user(self,detail):
+        self.driver.find_element(By.XPATH, self.serch_file).click()
+        self.driver.find_element(By.XPATH, self.serch_file).send_keys(detail)
+        self.driver.find_element(By.XPATH, self.click_user_detail).click()
+
+
+
+    # def user_search(self, detail):
+    #     self.driver.find_element(By.XPATH, self.serch_file).send_keys(detail)
 
     def click_editing_system_user(self):
         self.driver.find_element(By.XPATH, self.clickDetails).click()

@@ -7,10 +7,15 @@ class MongoDB:
 "mongodb+srv://test_dev:AtmNf7Iz5BIs0dzc@cluster0.qnr3p.mongodb.net/?retryWrites=true&w=majority")
         self.db = self.client[db]
         self.col = self.db[col]
+
     def find(self,q=""):
         for i in self.col.find(q):
             print(i)
 
+    def find_one1(self, key):
+        data = self.col.find_one({'id':'4jp555dl4b2tieg'})
+        return data[key]
 
-MongoDB("trado_qa","orders").find()
-MongoDB("trado_qa","stores").find()
+# print(MongoDB('trado_qa', 'adminusers').find_one1('phone'))
+# MongoDB("trado_qa","orders").find()
+# MongoDB("trado_qa","stores").find()
