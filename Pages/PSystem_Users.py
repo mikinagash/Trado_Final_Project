@@ -20,7 +20,7 @@ class SystemPage:
         self.clickLog = EL.clickLog
         self.btn_serch = EL.btn_system_users
         self.serch_file = EL.search_field
-        self.clickDetails = EL.click_details
+        # self.clickDetails = EL.click_details
         self.firstname_user_editing = EL.editing_firstname_user
         self.lastname_user_editing = EL.editing_lastname_user
         self.email_user_editing = EL.editing_email_user
@@ -70,15 +70,16 @@ class SystemPage:
     def enter_id_user(self,detail):
         self.driver.find_element(By.XPATH, self.serch_file).click()
         self.driver.find_element(By.XPATH, self.serch_file).send_keys(detail)
-        self.driver.find_element(By.XPATH, self.click_user_detail).click()
+        sleep(1)
+        self.driver.find_element(By.CSS_SELECTOR, self.click_user_detail).click()
 
 
 
     # def user_search(self, detail):
     #     self.driver.find_element(By.XPATH, self.serch_file).send_keys(detail)
 
-    def click_editing_system_user(self):
-        self.driver.find_element(By.XPATH, self.clickDetails).click()
+    # def click_editing_system_user(self):
+    #     self.driver.find_element(By.XPATH, self.clickDetails).click()
 
     def editing_firstname(self, name):
         self.driver.find_element(By.XPATH, self.firstname_user_editing).click()
