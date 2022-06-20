@@ -80,7 +80,7 @@ class Test_serch(Base):
         system.user_search(EL.authorization_)
         sleep(1)
         name = driver.find_element(By.CSS_SELECTOR, EL.authorization_user).text
-        assert name == EL.authorization_2
+        assert name == EL.authorization_2 or EL.authorization_
 
     def test_invalid_serch_by_stores(self):
         driver = self.driver
