@@ -1,7 +1,7 @@
 from Base.base import Base
 from Utils.Utils import Utils
 from time import sleep
-from Pages.POrders import OrdersPage
+from Pages.POrders2 import OrdersPage
 import pytest
 @pytest.mark.usefixtures('set_up')
 class TestOrders(Base):
