@@ -1,4 +1,6 @@
 from Base.base import Base
+
+from Tests.Server.Data_Base.Mongo_DB import Mongodb
 from Utils.Utils import Utils
 from time import sleep
 from Pages.POrders2 import OrdersPage
@@ -36,6 +38,10 @@ class TestOrders(Base):
         a = Utils(driver)
         search = OrdersPage(driver)
         search.enter_order("גרובר")
+        a.validtion(Mongodb.search_query(self,'lastName',"גרובר"),"גרובר","pic")
+        print(Mongodb.search_query(self,'lastName',"גרובר"))
+
+
 
 
 
@@ -46,6 +52,9 @@ class TestOrders(Base):
         a = Utils(driver)
         search = OrdersPage(driver)
         search.enter_order("גגג")
+        a.validtion(Mongodb.search_query(self,'lastName','גגג'),"גגג",'pic')
+        print(Mongodb.search_query(self,'lastName','גגג'))
+
 
 
     def test_verify_user_can_order_details(self):
