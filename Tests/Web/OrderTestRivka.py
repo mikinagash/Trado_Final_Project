@@ -4,6 +4,7 @@ from Trado_Finel_Project.Base.base import Base
 from Trado_Finel_Project.Pages.PagesRivka import OrdersPage
 from time import sleep
 from Trado_Finel_Project.Tests.Server.Data_Base.Mongo_DB import MongoDB
+from Trado_Finel_Project.Tests.Server.Data_Base.Mongo_DB import Queries
 import allure
 import pytest
 from Trado_Finel_Project.Utils.Utils import Utils
@@ -131,12 +132,13 @@ class Test_Orders(Base):
         a = Utils(driver)
         order = OrdersPage(driver)
         self.test_connect_to_site()
+        order.search_correct_pyment_type("1e1xpmlil4dzq0jn")
         order.Disply_details()
 
         name = driver.find_element(By.XPATH, OrdersElement.Dis_details).text
         assert name == " מספר הזמנה: 487"
         a.validtion(" מספר הזמנה: 487", OrdersElement.order_ready,"10")
-        #BUG
+        # #BUG
 
     def test_change_product_quantity(self):
         driver = self.driver
@@ -184,6 +186,7 @@ class Test_Orders(Base):
         name = driver.find_element(By.XPATH, OrdersElement.ready_to_delivery).text
         assert name == "סמן הזמנה כמוכנה למשלוח"
         a.validtion("סמן הזמנה כמוכנה למשלוח", OrdersElement.order_ready,"11")
+    # BUG
 
 
     def test_chang_status_order_from_ready_to_delivery_to_on_delivery(self):
@@ -223,6 +226,7 @@ class Test_Orders(Base):
         a = Utils(driver)
         order = OrdersPage(driver)
         self.test_connect_to_site()
+        order.search_correct_pyment_type("1e1xpmlil4dzq0jn")
         order.Disply_details()
         order.chang_p()
 
@@ -234,7 +238,6 @@ class Test_Orders(Base):
         assert name == "החלפת המוצר: שמן למון קוש"
         a.validtion("החלפת המוצר: שמן למון קוש", OrdersElement.change_product_,"13")
         # BUG
-
 
     def test_ui_trado_logo(self):
         driver = self.driver

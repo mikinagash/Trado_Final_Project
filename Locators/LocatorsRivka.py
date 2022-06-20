@@ -39,6 +39,7 @@ class OrdersElement:
     change_product_ = "//body[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/h4[1]"
     order_num_search = "//tbody/tr/td[1]"
     Dis_details = "//span[contains(text(),'מספר הזמנה: 487')]"
+    id = "1e1xpmlil4dzq0jn"
     new_status = "//div[contains(text(),'סטטוס הזמנה עודכן בהצלחה')]"
     pallets_status="//div[contains(text(),'סטטוס משטחים עודכן בהצלחה')]"
 

@@ -10,8 +10,8 @@ class Test_api_orsers():
         response = res.json()
         assert res.elapsed.total_seconds() < 10
         assert (response['status']) == 200
-        # assert (response['payload']['count']) == 45
-        # assert (response['payload']['data'][0]['PaymentType']) == ' ולדימיר'
+        assert (response['payload']['count']) == 45
+        assert (response['payload']['data'][0]['PaymentType']) == ' b2b'
         print(res.status_code)
         print(response)
 
@@ -21,8 +21,8 @@ class Test_api_orsers():
         response = res.json()
         assert res.elapsed.total_seconds() < 10
         assert (response['status']) == 200
-        # assert (response['payload']['count']) == 45
-        # assert (response['payload']['data'][0]['PaymentType']) == ' ולדימיר'
+        assert (response['payload']['count']) == 169
+        assert (response['payload']['data'][0]['PaymentType']) == 'bankTransfer'
         print(res.status_code)
         print(response)
 
@@ -32,8 +32,8 @@ class Test_api_orsers():
         response = res.json()
         assert res.elapsed.total_seconds() < 10
         assert (response['status']) == 200
-        # assert (response['payload']['count']) == 45
-        # assert (response['payload']['data'][0]['PaymentType']) == ' ולדימיר'
+        assert (response['payload']['count']) == 48
+        assert (response['payload']['data'][0]['PaymentType']) == 'etrado'
         print(res.status_code)
         print(response)
 
@@ -43,7 +43,7 @@ class Test_api_orsers():
         response = res.json()
         assert res.elapsed.total_seconds() < 10
         assert (response['status']) == 200
-        # assert (response['payload']['count']) == 45
-        # assert (response['payload']['data'][0]['PaymentType']) == ' ולדימיר'
+        assert (response['payload']['count']) == 1
+        assert (response['payload']['data'][0]['PaymentType']) == '470'
         print(res.status_code)
         print(response)
