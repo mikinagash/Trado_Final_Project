@@ -1,21 +1,29 @@
 import pymongo
-
-
 class MongoDB:
-    def __init__(self,db,col):
+    def __init__(self):
         self.client = pymongo.MongoClient(
 "mongodb+srv://test_dev:AtmNf7Iz5BIs0dzc@cluster0.qnr3p.mongodb.net/?retryWrites=true&w=majority")
-        self.db = self.client[db]
-        self.col = self.db[col]
+        self.db = self.client['trado_qa']
 
-    def find(self,q=""):
-        for i in self.col.find(q):
+    def collection(self, col):
+        self.collection = self.db[col]
+        return self.collection
+
+
+class Queries(MongoDB):
+    def find_all(self, col):
+        self.collection(col)
+        for i in col:
             print(i)
 
-    def find_one1(self, key):
-        data = self.col.find_one({'id':'4jp555dl4b2tieg'})
-        return data[key]
 
-# print(MongoDB('trado_qa', 'adminusers').find_one1('phone'))
-# MongoDB("trado_qa","orders").find()
-# MongoDB("trado_qa","stores").find()
+
+    def find_one(self, col, key1):
+        self.collection()
+        return key1
+
+    def find_one12(self, col,key1, key2):
+        pass
+
+a = Queries()
+a.find_all('orders')

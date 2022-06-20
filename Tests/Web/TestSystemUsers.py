@@ -1,4 +1,4 @@
-from Tests.Server.Data_Base.Mongo_DB import MongoDB
+from Tests.Server.Data_Base.Mongo_DB import MongoDB,Queries
 from time import sleep
 from selenium.webdriver.common.by import By
 from Pages.PSystem_Users import SystemPage
@@ -169,8 +169,9 @@ class Test_Editing_system_user(Base):
         # new_edition_user_by_name = driver.find_element(By.XPATH, EL.click_details).text
         # assert new_edition_user_by_name == 'salmon'
         sleep(6)
-        a = MongoDB.find_one1(['firstName'])
-        print(a)
+        # a = MongoDB('trado_qa', 'adminusers').find_one1('firstName')
+        # assert a == 'salmon'
+        assert Queries.find_one('firstName','salmon')
 
     def test_valid_update_lastname(self):
         driver = self.driver
