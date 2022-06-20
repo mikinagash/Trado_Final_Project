@@ -1,14 +1,13 @@
-from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 from Trado_Finel_Project.Locators.LocatorsRivka import OrdersElement
 from Trado_Finel_Project.Base.base import Base
 from Trado_Finel_Project.Pages.PagesRivka import OrdersPage
 from time import sleep
+from Trado_Finel_Project.Tests.Server.Data_Base.Mongo_DB import MongoDB
 import allure
 import pytest
-
-
 from Trado_Finel_Project.Utils.Utils import Utils
+import pymongo
 
 
 @pytest.mark.usefixtures('set_up')
@@ -31,7 +30,7 @@ class Test_Orders(Base):
 
         name = driver.find_element(By.XPATH,OrdersElement.pyType).text
         assert name == "b2b"
-        a.validtion("b2b",OrdersElement.pyType)
+        a.validtion("b2b",OrdersElement.pyType,"1")
 
     def test_valid_search_pyment_type_bank_transfer(self):
         driver = self.driver
@@ -43,7 +42,7 @@ class Test_Orders(Base):
 
         name = driver.find_element(By.XPATH, OrdersElement.pyType).text
         assert name == "bankTransfer"
-        a.validtion("bankTransfer", OrdersElement.pyType)
+        a.validtion("bankTransfer", OrdersElement.pyType,"2")
 
 
     def test_valid_search_pyment_type_e_trado(self):
@@ -56,7 +55,7 @@ class Test_Orders(Base):
 
         name = driver.find_element(By.XPATH, OrdersElement.pyType).text
         assert name == "etrado"
-        a.validtion("etrado", OrdersElement.pyType)
+        a.validtion("etrado", OrdersElement.pyType,"3")
 
     def test_valid_search_order_number(self):
         driver = self.driver
@@ -68,7 +67,7 @@ class Test_Orders(Base):
 
         name = driver.find_element(By.XPATH, OrdersElement.order_num_search).text
         assert name == "470"
-        a.validtion("470", OrdersElement.order_num_search)
+        a.validtion("470", OrdersElement.order_num_search,"4")
 
     def test_invalid_search_order_number(self):
         driver = self.driver
@@ -80,7 +79,7 @@ class Test_Orders(Base):
 
         name = driver.find_element(By.XPATH, OrdersElement.no_result).text
         assert name == "מציג\nלעמוד"
-        a.validtion("מציג\nלעמוד", OrdersElement.no_result)
+        a.validtion("מציג\nלעמוד", OrdersElement.no_result,"5")
 
 
     def test_switch_page(self):
@@ -91,8 +90,8 @@ class Test_Orders(Base):
         order.move_to_page()
 
         name = driver.find_element(By.XPATH, OrdersElement.switch).text
-        assert name == "מציג 51-100 מתוך 267 שורות"
-        a.validtion("מציג 51-100 מתוך 267 שורות", OrdersElement.switch)
+        assert name == "מציג 51-100 מתוך 271 שורות"
+        a.validtion("מציג 51-100 מתוך 271 שורות", OrdersElement.switch,"6")
 
     def test_ready_order_page(self):
         driver = self.driver
@@ -103,7 +102,7 @@ class Test_Orders(Base):
 
         name = driver.find_element(By.XPATH, OrdersElement.order_ready).text
         assert name == "מוכנה"
-        a.validtion("מוכנה", OrdersElement.order_ready)
+        a.validtion("מוכנה", OrdersElement.order_ready,"7")
 
     def test_delivery_order_page(self):
         driver = self.driver
@@ -114,7 +113,7 @@ class Test_Orders(Base):
 
         name = driver.find_element(By.XPATH, OrdersElement.order_ready).text
         assert name == "במשלוח"
-        a.validtion("במשלוח", OrdersElement.order_ready)
+        a.validtion("במשלוח", OrdersElement.order_ready,"8")
 
     def test_end_order_page(self):
         driver = self.driver
@@ -125,7 +124,7 @@ class Test_Orders(Base):
 
         name = driver.find_element(By.XPATH, OrdersElement.order_ready).text
         assert name == "סיום"
-        a.validtion("סיום", OrdersElement.order_ready)
+        a.validtion("סיום", OrdersElement.order_ready,"9")
 
     def test_order_details(self):
         driver = self.driver
@@ -136,7 +135,7 @@ class Test_Orders(Base):
 
         name = driver.find_element(By.XPATH, OrdersElement.Dis_details).text
         assert name == " מספר הזמנה: 487"
-        a.validtion(" מספר הזמנה: 487", OrdersElement.order_ready)
+        a.validtion(" מספר הזמנה: 487", OrdersElement.order_ready,"10")
         #BUG
 
     def test_change_product_quantity(self):
@@ -155,6 +154,7 @@ class Test_Orders(Base):
         order.Disply_details()
         order.change_pallets_quantity()
         order.choose_pallets_q()
+        order.assert_change_pallets()
 
     def test_update_weight(self):
         driver = self.driver
@@ -183,7 +183,7 @@ class Test_Orders(Base):
 
         name = driver.find_element(By.XPATH, OrdersElement.ready_to_delivery).text
         assert name == "סמן הזמנה כמוכנה למשלוח"
-        a.validtion("סמן הזמנה כמוכנה למשלוח", OrdersElement.order_ready)
+        a.validtion("סמן הזמנה כמוכנה למשלוח", OrdersElement.order_ready,"11")
 
 
     def test_chang_status_order_from_ready_to_delivery_to_on_delivery(self):
@@ -215,7 +215,7 @@ class Test_Orders(Base):
 
         name = driver.find_element(By.XPATH, OrdersElement.Missing_product).text
         assert name == "חסר"
-        a.validtion("חסר", OrdersElement.order_ready)
+        a.validtion("חסר", OrdersElement.order_ready,"12")
         #BUG
 
     def test_chang_product(self):
@@ -228,11 +228,11 @@ class Test_Orders(Base):
 
         name = driver.find_element(By.XPATH, OrdersElement.change_product).text
         assert name == "החלף"
-        a.validtion("החלף", OrdersElement.order_ready)
+        a.validtion("החלף", OrdersElement.order_ready,"13")
 
         name = driver.find_element(By.XPATH, OrdersElement.change_product_windows).text
         assert name == "החלפת המוצר: שמן למון קוש"
-        a.validtion("החלפת המוצר: שמן למון קוש", OrdersElement.change_product_)
+        a.validtion("החלפת המוצר: שמן למון קוש", OrdersElement.change_product_,"13")
         # BUG
 
 
