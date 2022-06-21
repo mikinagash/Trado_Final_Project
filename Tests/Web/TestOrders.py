@@ -1,8 +1,6 @@
 from Base.base import Base
-
 from Tests.Server.Data_Base.Mongo_DB import Mongodb
 from Utils.Utils import Utils
-from time import sleep
 from Pages.POrders2 import OrdersPage
 import pytest
 @pytest.mark.usefixtures('set_up')
@@ -15,8 +13,12 @@ class TestOrders(Base):
         a = Utils(driver)
         search = OrdersPage(driver)
         search.enter_order("עדי")
-        # print(len(OrdersElement.table))
-        # a.validtion( len(OrdersElement.table > 1),len(OrdersElement.table > 1))
+        a.validtion(Mongodb.search_query(self, 'firstName', "עדי"), "עדי", "pic")
+        print(Mongodb.search_query(self, 'firstName', "עדי"))
+
+
+
+
 
     def test_search_order_correct_by_partly_first_name(self):
         driver = self.driver
@@ -40,11 +42,6 @@ class TestOrders(Base):
         search.enter_order("גרובר")
         a.validtion(Mongodb.search_query(self,'lastName',"גרובר"),"גרובר","pic")
         print(Mongodb.search_query(self,'lastName',"גרובר"))
-
-
-
-
-
 
 
     def test_search_order_incorrect_by_last_name(self):
