@@ -396,8 +396,35 @@ class Test_Stores(Base):
         sleep(2)
         results.validtion(asrt, 'מציג\nלעמוד\nאין תוצאות\nמציג 1-50 מתוך שורות', "store30")
 
+ #ui
 
+    # verify logo img
+    def test_u1_pic(self):
+        driver = self.driver
+        store = StoresPage(driver)
+        img = store.trado_logo_1()
+        assert img == StoresPage.imglink
 
+    # verify  button text and size
+    def test_u2_logo(self):
+        driver = self.driver
+        store = StoresPage(driver)
+        value = store.store_h4_logo_stores()
+        assert value[0] == "חנויות" and value[1] == "26" and value[2] == "44"
+
+    # #  verify button size
+    def test_u3_barsicon(self):
+        driver = self.driver
+        store = StoresPage(driver)
+        value = store.bars_icon_store()
+        assert value[0] == "15" and value[1] == "15"
+
+    ##
+    def test_u3_searchField_store(self):
+        driver = self.driver
+        store = StoresPage(driver)
+        value = store.search_field_size()
+        assert value[0] == "40" and value[1] == "193"
 
 
 
