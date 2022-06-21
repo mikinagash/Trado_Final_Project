@@ -50,6 +50,7 @@ class StoresPage(LocatorsStores):
         self.assErrorPhone=LocatorsStores.assErrorPhone
         self.assNoResults=LocatorsStores.assNoResults
         self.assDuplicate=LocatorsStores.assDuplicate
+        self.tradologo=LocatorsStores.tradologo
 
     def add_store(self):
         self.driver.find_element(By.XPATH, self.addButton).click()
@@ -129,6 +130,33 @@ class StoresPage(LocatorsStores):
 
 
 
+
+
+######## ui #######
+
+    def trado_logo_1(self):
+        value = self.driver.find_element(By.XPATH,self.tradologo).get_attribute("src")
+        return value
+
+
+    def store_h4_logo_stores(self):
+        value = self.driver.find_element(By.XPATH,self.storeh4logotext).get_attribute("innerHTML")
+        Height = self.driver.find_element(By.XPATH, self.storeh4logotext).get_attribute("clientHeight")
+        Width = self.driver.find_element(By.XPATH, self.storeh4logotext).get_attribute("clientWidth")
+        return value ,Height ,Width
+
+
+
+    def bars_icon_store(self):
+        Height = self.driver.find_element(By.XPATH, self.barsicon).get_attribute("clientHeight")
+        Width = self.driver.find_element(By.XPATH, self.barsicon).get_attribute("clientWidth")
+        return Height , Width
+
+
+    def search_field_size(self):
+        Height = self.driver.find_element(By.XPATH, self.search_field_stores).get_attribute("clientHeight")
+        Width = self.driver.find_element(By.XPATH, self.search_field_stores).get_attribute("clientWidth")
+        return Height, Width
 
 
 

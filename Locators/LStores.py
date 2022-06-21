@@ -46,5 +46,11 @@ class LocatorsStores:
     logoPath= r'//Users/racha/Downloads/logoweb.jpg'
 
 
+    # ui
+    tradologo = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[1]/div[1]/a[1]/img[1]"
+    storeh4logotext = "//h4[contains(text(),'חנויות')]"
+    barsicon = "//body/div[@id='root']/div[1]/div[2]/main[1]/div[1]/div[1]/span[1]/span[1]/i[1]"
+    imglink ="https://storage.cloud.google.com/trado_images/settings/value-2rnvbaw5joki7qm8ud?1607509995191"
+    search_field_stores = "//body[1]/div[1]/div[1]/div[2]/main[1]/div[2]/div[1]/div[1]/span[1]/span[1]/div[1]"
 
 
