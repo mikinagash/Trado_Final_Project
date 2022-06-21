@@ -48,7 +48,9 @@ class SystemPage:
         sleep(1)
         self.driver.find_element(By.XPATH, self.passwordField).send_keys(EL.password)
         self.driver.find_element(By.XPATH, self.clickLog).click()
+        sleep(1)
         self.driver.find_element(By.XPATH, self.btn_serch).click()
+        sleep(1)
 
 
     # def Btn_serch(self):
@@ -99,6 +101,7 @@ class SystemPage:
     def editing_phone(self,phone):
         self.driver.find_element(By.XPATH, self.phone_user_editing).click()
         self.driver.find_element(By.XPATH, self.phone_user_editing).clear()
+        sleep(1)
         self.driver.find_element(By.XPATH, self.phone_user_editing).send_keys(phone)
 
     def editing_role(self,num):
@@ -115,7 +118,7 @@ class SystemPage:
         self.driver.find_element(By.XPATH, self.stores_user_editing).click()
         self.driver.find_element(By.XPATH, self.stores_user_editing).clear()
         self.driver.find_element(By.XPATH, self.stores_user_editing).send_keys(store)
-        # self.driver.find_element(By.XPATH, self.phone_user_editing).click()
+        self.driver.find_element(By.XPATH, "//form[1]/div[1]/div[7]/span[1]/div[3]/div[1]/div[1]").click()
 
 
 

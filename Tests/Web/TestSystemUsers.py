@@ -1,4 +1,4 @@
-from Tests.Server.Data_Base.Mongo_DB import MongoDB,Queries
+from Tests.Server.Data_Base.Mongo_DB import MongoClient,Mongodb
 from time import sleep
 from selenium.webdriver.common.by import By
 from Pages.PSystem_Users import SystemPage
@@ -43,12 +43,12 @@ class Test_serch(Base):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        # system.Btn_serch()
         system.click_serch_file()
         system.user_search(EL.email_)
         sleep(1)
         name = driver.find_element(By.CSS_SELECTOR, EL.email_user).text
         assert name == EL.email_
+        assert Mongodb.query('email','email',EL.email_) == EL.email_
 
     def test_valid_serch_by_phone(self):
         driver = self.driver
@@ -130,29 +130,28 @@ class Test_Editing_system_user(Base):
         system.editing_phone('9513247812')
         system.editing_role(3)
         system.editing_authorization(0)
-        system.editing_stores('tasama')
+        system.editing_stores('ני')
         system.editing_Btn_click()
-        sleep(6)
-        # new_edition_user_by_name = driver.find_element(By.XPATH, EL.click_details).text
-        # assert new_edition_user_by_name == 'salmon'
-        assert MongoDB.find()
+        sleep(1 )
+        new_edition_user_by_name = driver.find_element(By.XPATH, EL.firstName_details).text
+        assert new_edition_user_by_name == 'eli'
+        assert Mongodb.query(self,'firstName','firstName','eli') == 'eli'
 
     def test_valid_update_With_required_fields(self):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        # system.Btn_serch()
-        # system.click_editing_system_user()
         system.enter_id_user(EL.id_user)
         system.editing_firstname('סלמוןט')
         system.editing_lastname('טסמהט')
         system.editing_email('salmon@gmail.com')
-        system.editing_stores('adidas')
+        system.editing_stores('ובניו')
         system.editing_Btn_click()
-        sleep(3)
-        new_edition_user_by_name = driver.find_element(By.XPATH, EL.click_details).text
+        sleep(1)
+        new_edition_user_by_name = driver.find_element(By.XPATH, EL.firstName_details).text
         assert new_edition_user_by_name == 'סלמוןט'
-        sleep(6)
+        assert Mongodb.query(self,'firstName','firstName','סלמוןט') == 'סלמוןט'
+
 
 
     def test_valid_update_name(self):
@@ -166,97 +165,91 @@ class Test_Editing_system_user(Base):
         sleep(3)
         system.editing_firstname('salmon')
         sleep(3)
-        system.editing_stores('a')
+        # system.editing_stores('a')
         system.editing_Btn_click()
         sleep(3)
         new_edition_user_by_name = driver.find_element(By.XPATH, EL.firstName_details).text
         assert new_edition_user_by_name == 'salmon'
-        # a = MongoDB('trado_qa', 'adminusers').find_one1('firstName')
-        # assert a == 'salmon'
-        # assert Queries.find_one('adminUser','firstName') == 'salmon'
+        assert Mongodb.query(self,'firstName','firstName','salmon') == 'salmon'
+
 
     def test_valid_update_lastname(self):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        # system.Btn_serch()
-        # system.click_editing_system_user()
         system.enter_id_user(EL.id_user)
         system.editing_lastname('tasama')
-        system.editing_stores('a')
+        # system.editing_stores('a')
         system.editing_Btn_click()
-        sleep(3)
-        new_edition_user_by_name = driver.find_element(By.XPATH, "//table[1]/tbody[1]/tr[12]/td[2]").text
-        assert new_edition_user_by_name == 'tasama'
-        sleep(3)
+        sleep(1)
+        new_edition_user_by_lastName = driver.find_element(By.XPATH, EL.lastName_details).text
+        assert new_edition_user_by_lastName == 'tasama'
+        assert Mongodb.query(self,'lastName','lastName','tasama') == 'tasama'
+
 
     def test_valid_update_email(self):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        # system.Btn_serch()
-        # system.click_editing_system_user()
         system.enter_id_user(EL.id_user)
-        system.editing_email('salon@gmail.com')
-        system.editing_stores('a')
+        system.editing_email('son@gmail.com')
+        # system.editing_stores('a')
         system.editing_Btn_click()
         sleep(3)
-        new_edition_user_by_name = driver.find_element(By.XPATH, "//tbody[1]/tr[12]/td[3]").text
-        assert new_edition_user_by_name == 'salon@gmail.com'
-        sleep(3)
+        new_edition_user_by_email = driver.find_element(By.XPATH, EL.email_details).text
+        assert new_edition_user_by_email == 'salon@gmail.com'
+        assert Mongodb.query(self,'email','email','son@gmail.com') == 'son@gmail.com'
+
 
     def test_valid_update_phone(self):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        # system.Btn_serch()
-        # system.click_editing_system_user()
         system.enter_id_user(EL.id_user)
         system.editing_phone('1234567894')
-        system.editing_stores('a')
+        # system.editing_stores('TRADO')
         system.editing_Btn_click()
         sleep(3)
-        new_edition_user_by_name = driver.find_element(By.XPATH, "//table[1]/tbody[1]/tr[12]/td[4]").text
-        assert new_edition_user_by_name == '1234567894'
-        sleep(3)
+        new_edition_user_by_phone = driver.find_element(By.XPATH, EL.phone_details).text
+        assert new_edition_user_by_phone == '1234567894'
+        assert Mongodb.query(self,'phone','phone','1234567894') == '1234567894'
+
 
     def test_valid_update_role(self):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        # system.Btn_serch()
-        # system.click_editing_system_user()
         system.enter_id_user(EL.id_user)
         system.editing_role(3)
-        system.editing_stores('a')
+        # system.editing_stores('a')
         system.editing_Btn_click()
-        sleep(3)
-        new_edition_user_by_name = driver.find_element(By.XPATH, "//table[1]/tbody[1]/tr[12]/td[5]").text
+        sleep(1)
+        new_edition_user_by_name = driver.find_element(By.CSS_SELECTOR, EL.role_user).text
         assert new_edition_user_by_name == 'מנהל' or 'admin' or 'חנות' or 'owner' or 'מסירה'
+        # assert Mongodb.query(self,'role','role','') == 'salmon'
+
         sleep(3)
 
     def test_valid_update_authorization(self):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        # system.Btn_serch()
-        # system.click_editing_system_user()
         system.enter_id_user(EL.id_user)
         system.editing_authorization(1)
-        system.editing_stores('a')
+        # system.editing_stores('a')
         system.editing_Btn_click()
-        new_edition_user_by_name = driver.find_element(By.XPATH, "//table[1]/tbody[1]/tr[12]/td[6]").text
-        assert new_edition_user_by_name == 'write' or "כתיבה"
-        sleep(1)
+        new_edition_user_by_authorization = driver.find_element(By.XPATH, EL.authorization_details).text
+        assert new_edition_user_by_authorization == 'write' or "כתיבה"
+        assert Mongodb.query(self,'permission','permission','כתיבה') == 'write'
+
+
 
     def test_valid_update_stores(self):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        # system.Btn_serch()
-        # system.click_editing_system_user()
         system.enter_id_user(EL.id_user)
-        system.editing_stores('salmon')
+        system.editing_stores('ניצי')
         system.editing_Btn_click()
         sleep(6)
         new_edition_user_by_name = driver.find_element(By.XPATH, "//table[1]/tbody[1]/tr[12]/td[7]").text
@@ -268,7 +261,6 @@ class Test_Editing_system_user(Base):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        # system.click_editing_system_user()
         system.enter_id_user(EL.id_user)
         system.editing_firstname('')
         system.editing_lastname('')
@@ -277,7 +269,6 @@ class Test_Editing_system_user(Base):
         system.editing_role(0)
         system.editing_authorization(0)
         system.editing_stores('')
-        # system.editing_Btn_click()
         sleep(1)
         system.error_message_firstname()
         system.error_message_lastname()
@@ -316,7 +307,6 @@ class Test_Editing_system_user(Base):
         driver = self.driver
         system = SystemPage(driver)
         system.Entrance()
-        # system.click_editing_system_user()
         system.enter_id_user(EL.id_user)
         system.editing_firstname('')
         system.editing_lastname('dsfg')
@@ -325,12 +315,12 @@ class Test_Editing_system_user(Base):
         system.editing_role(2)
         system.editing_authorization(0)
         system.editing_stores('xknui')
-        # system.editing_Btn_click()
         sleep(1)
         system.error_message_firstname()
         sleep(1)
         system.editing_Btn_click()
         assert system.editing_error_messege_firstname() == EL.error_message_pops_up
+        assert Mongodb.query(self,'firstName','firsName','sad') != ''
 
     def test_invalid_Update_lastname_is_null(self):
         driver = self.driver
@@ -457,7 +447,7 @@ class Test_add_a_user(Base):
         system = SystemPage(driver)
         system.Entrance()
         system.click_add_but()
-        system.editing_firstname('salmontasama231')
+        system.editing_firstname('salmontasama23132')
         system.editing_lastname('safas12')
         system.editing_email('salmont@gmai.com')
         system.editing_phone('1235678939')
@@ -465,7 +455,7 @@ class Test_add_a_user(Base):
         system.editing_authorization(0)
         system.editing_stores('salmon')
         sleep(6)
-        system.click_add()
+        # system.click_add()
         add_user = self.driver.find_element(By.XPATH, EL.lin_add_user).text
         assert add_user == 'salmontasama231'
         sleep(9)
@@ -476,7 +466,7 @@ class Test_add_a_user(Base):
         system = SystemPage(driver)
         system.Entrance()
         system.click_add_but()
-        system.editing_firstname('xfad')
+        system.editing_firstname('משה')
         system.editing_lastname('safas')
         system.editing_email('salmon@gmai.com')
         system.editing_stores('salmon')
@@ -485,9 +475,9 @@ class Test_add_a_user(Base):
         system.error_message_lastname()
         system.error_message_email()
         system.error_message_stores_()
-        system.click_add()
+        # system.click_add()
         add_user = self.driver.find_element(By.XPATH, EL.lin_add_user).text
-        assert add_user == 'xfad'
+        assert add_user == 'משה'
         sleep(9)
 
 

@@ -67,7 +67,7 @@ class SystemElement:
 
     firstName_details = "//table[1]/tbody[1]/tr[1]/td[1]"
 
-    lastName_details = "//table[1]/tbody[1]/tr[1]/td[2]"######################################################################
+    lastName_details = "//table[1]/tbody[1]/tr[1]/td[2]"#######################
 
     email_details = "//table[1]/tbody[1]/tr[1]/td[3]"
 
