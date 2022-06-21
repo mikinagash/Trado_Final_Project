@@ -3,10 +3,9 @@ from Trado_Finel_Project.Locators.LocatorsRivka import OrdersElement
 from Trado_Finel_Project.Base.base import Base
 from Trado_Finel_Project.Pages.PagesRivka import OrdersPage
 from time import sleep
-from Trado_Finel_Project.Tests.Server.Data_Base.Mongo_DB import MongoDB
-from Trado_Finel_Project.Tests.Server.Data_Base.Mongo_DB import Queries
 import allure
 import pytest
+from Trado_Finel_Project.Tests.Server.Data_Base.Mongo_DB import Mongodb
 from Trado_Finel_Project.Utils.Utils import Utils
 import pymongo
 
@@ -91,8 +90,8 @@ class Test_Orders(Base):
         order.move_to_page()
 
         name = driver.find_element(By.XPATH, OrdersElement.switch).text
-        assert name == "מציג 51-100 מתוך 271 שורות"
-        a.validtion("מציג 51-100 מתוך 271 שורות", OrdersElement.switch,"6")
+        assert name == "מציג 51-100 מתוך 273 שורות"
+        a.validtion("מציג 51-100 מתוך 273 שורות", OrdersElement.switch,"6")
 
     def test_ready_order_page(self):
         driver = self.driver
@@ -187,7 +186,6 @@ class Test_Orders(Base):
         assert name == "סמן הזמנה כמוכנה למשלוח"
         a.validtion("סמן הזמנה כמוכנה למשלוח", OrdersElement.order_ready,"11")
     # BUG
-
 
     def test_chang_status_order_from_ready_to_delivery_to_on_delivery(self):
         driver = self.driver
