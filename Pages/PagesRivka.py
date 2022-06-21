@@ -4,7 +4,6 @@ from Trado_Finel_Project.Locators.LocatorsRivka import OrdersElement
 from time import sleep
 from selenium.webdriver.common.keys import Keys
 
-
 class OrdersPage(OrdersElement):
 
     def __init__(self,driver):

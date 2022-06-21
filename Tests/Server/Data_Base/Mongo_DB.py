@@ -7,7 +7,8 @@ class Mongodb:
         collection = db["orders"]
         results = collection.find({key:value})
         for result in results:
-            return result["lastName"]
+            return result["lastName"],result['firstName']
+
 
     def search_query2(self,key,value):
         cluster = MongoClient("mongodb+srv://test_dev:AtmNf7Iz5BIs0dzc@cluster0.qnr3p.mongodb.net/?retryWrites=true&w=majority")
