@@ -1,4 +1,4 @@
-from Base.base import Base
+from Base.base import *
 from Pages.PReports import Report_Page
 import pytest
 from time import sleep
@@ -9,7 +9,7 @@ from Utils.Utils import Utils
 @pytest.mark.usefixtures('set_up')
 class Test_Reports(Base):
 
-    # move between dates and verify the selected dates are displayed
+    # verify selected dates are matching the displayed dates
     def test_something(self):
         driver = self.driver
         reports = Report_Page(driver)
@@ -24,19 +24,36 @@ class Test_Reports(Base):
                and value[0][3][-8:-3] == value[1][3][:5] \
                and value[0][4][-8:-3] == value[1][4][:5] \
                and value[0][5][-8:-3] == value[1][5][:5]
-        print(value)
 
+    # verify the buttons are working
+    # def test_select_buttons(self):
+    #     driver = self.driver
+    #     reports = Report_Page(driver)
+    #     reports.open_reports_page()
+    #     reports.datesButton()
+    #     reports.selectyear()
+    #     reports.selectmonth(reports.leftscroldown,4)
+    #     reports.right_button_click()
+    #     reports.left_button_click()
 
-    def test_sel_quick(self):
+    def test_ckicajsk(self):
         driver = self.driver
         reports = Report_Page(driver)
         reports.open_reports_page()
         reports.datesButton()
-        reports.selectyear()
-        sleep(2)
-        reports.selectmonth(reports.leftscroldown,4)
-        sleep(3)
+        reports.right_button_click()
+        g = reports.left_button_click()
+        assert g == True
 
+
+
+
+
+
+
+
+
+    #ui
 
     # verify logo img
     def test_ui_top_left_logo(self):
@@ -78,24 +95,6 @@ class Test_Reports(Base):
         reports.open_reports_page()
         value = reports.save_button()
         assert value[0] == "38" and value[1] == "56" and value[2] == "שמירה"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

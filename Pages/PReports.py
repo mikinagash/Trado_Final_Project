@@ -1,15 +1,7 @@
 from selenium.webdriver.common.by import By
 from time import *
-from random import randint
-from selenium import webdriver
 from selenium.webdriver.support.ui import Select
-
-
-
-import Locators.LReports
 from Locators.LReports import Reports
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
 
 
 class Report_Page(Reports):
@@ -65,6 +57,9 @@ class Report_Page(Reports):
     # click left button in the calendar
     def left_button_click(self):
         self.driver.find_element(By.XPATH,self.datesLeftButton).click()
+        value = self.driver.find_element(By.XPATH, self.datesLeftButton).get_attribute("disabled")
+        print(value)
+        return value
 
     # click right button in the calendar
     def right_button_click(self):
@@ -101,7 +96,7 @@ class Report_Page(Reports):
         vavlue = self.driver.find_element(By.XPATH, self.saveButton).get_attribute("innerHTML")
         return Height , Width ,vavlue
 
-
+    # extract the text that displayed on each field, after each button press, and put it in a list
     def dates_static(self):
         s = self.driver.find_elements_by_xpath(self.lrdrStaticRange)
         # b = self.driver.find_element(By.XPATH,self.datesbutton).get_attribute("innerHTML")
@@ -158,7 +153,7 @@ class Report_Page(Reports):
 
 
 ##############------------------------------------------------------------------#######################
-
+    #ui sys users
     def enterSystem(self):
         self.driver.find_element(By.XPATH,self.systemuserspage).click()
 
